@@ -15,6 +15,9 @@ const readStoredTrackAnswers = () => {
 
 function DashboardRoadmap({ progressData, getStationWithProgress, resetSignal }) {
   const [activeTab, setActiveTab] = useState('roadmap')
+  const [showWelcomeModal, setShowWelcomeModal] = useState(() => {
+    return localStorage.getItem('espi-welcome-shown') !== 'true';
+  });
   const [userName, setUserName] = useState(() => {
     return localStorage.getItem('user-name') || '';
   });
@@ -51,6 +54,12 @@ function DashboardRoadmap({ progressData, getStationWithProgress, resetSignal })
       setActiveTab('company');
     }
   }, [hasCompanyInfoFilled, activeTab]);
+
+  useEffect(() => {
+    if (!showWelcomeModal) {
+      localStorage.setItem('espi-welcome-shown', 'true');
+    }
+  }, [showWelcomeModal]);
 
 
   const [selectedStationId, setSelectedStationId] = useState(null);
@@ -238,6 +247,38 @@ function DashboardRoadmap({ progressData, getStationWithProgress, resetSignal })
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      {showWelcomeModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6 relative">
+            <button
+              onClick={() => setShowWelcomeModal(false)}
+              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <div className="space-y-4">
+              <h2 className="text-2xl font-bold text-gray-900">Welcome to your ESPI workflow</h2>
+              <p className="text-sm text-gray-600">
+                This roadmap walks you from basic company info through financial numbers,
+                funding tracks, insurance, and final submission. Complete the Company Info
+                tab first; we use it to unlock the other sections. Funding and submission
+                stations only open when their prerequisites and eligibility answers are met.
+              </p>
+              <ul className="text-sm text-gray-700 space-y-2 pl-5 list-disc">
+                <li>Fill out Company Info to unlock the roadmap and answers tabs.</li>
+                <li>Complete tracks in order; next steps appear under “Next possible tracks”.</li>
+                <li>When all required tracks reach 100%, the appointment button unlocks.</li>
+              </ul>
+              <button
+                onClick={() => setShowWelcomeModal(false)}
+                className="w-full mt-2 bg-[#0050bb] text-white rounded-lg py-2 font-semibold hover:bg-[#33d5e4]"
+              >
+                Got it, let’s start
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="py-8">
         {/* Tab Navigation */}
         <div className="mb-8 bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">

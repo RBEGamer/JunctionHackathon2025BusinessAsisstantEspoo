@@ -1,0 +1,117 @@
+version: 1
+options:
+  - id: business_finland_yic
+    track: funding
+    type: yic_grant
+    label: "Business Finland – Young Innovative Company (YIC) Funding"
+    provider: "Business Finland"
+    url: "https://www.businessfinland.fi/en/services/funding/funding-services/Young-innovative-companies/"
+
+    summary: >
+      Up to €1,000,000 in three grant phases (250k + 250k + 500k) for young,
+      high-growth Finnish startups (under 5 years old) with strong international
+      traction, turnover and equity investments.
+      Links:
+      - Business Finland – Funding for Companies (https://www.businessfinland.fi/en)
+      - Finnvera – Loans & Guarantees for Entrepreneurs (https://www.finnvera.fi/eng)
+      - Start-up Grant (Info via TE Services) (https://www.te-palvelut.fi/en)
+      - Finnish Business Mentors (Yrityskummit) (https://www.yrityskummit.fi)
+      - Uusyrityskeskus – Finnish Enterprise Agencies (https://www.uusyrityskeskus.fi/in-english)
+
+    stage: "scaleup"
+    country: "FI"
+
+    eligibility:
+      criteria_refs:
+        - id: company_registered
+          answer_key: "startup.company_registered"
+          expected_value: true
+        # Core YIC profile
+        - id: company_under_5_years
+          answer_key: "company.is_under_5_years"
+          expected_value: true
+
+        - id: scalable_international_growth
+          answer_key: "company.scalable_international"
+          expected_value: true
+
+        - id: significant_scalable_turnover
+          answer_key: "company.turnover_scalable_over_420k"
+          expected_value: true
+
+        - id: equity_investments_over_1m
+          answer_key: "company.equity_investments_over_1m"
+          expected_value: true
+
+        - id: management_international_expertise
+          answer_key: "company.management_international_expertise"
+          expected_value: true
+
+        - id: significant_international_turnover
+          answer_key: "company.international_turnover_significant"
+          expected_value: true
+
+        # Disqualifying risk conditions (must be FALSE)
+        - id: missing_financial_statements
+          answer_key: "company.missing_financial_statements"
+          expected_value: false
+
+        - id: missing_beneficial_owner_notification
+          answer_key: "company.beneficial_owners_notification_missing"
+          expected_value: false
+
+        - id: tax_debts_without_payment_plan
+          answer_key: "company.tax_debts_without_plan"
+          expected_value: false
+
+        - id: bf_tekes_loan_arrears
+          answer_key: "company.bf_tekes_loan_arrears"
+          expected_value: false
+
+    # Minimal inputs this track needs; answers stored under these keys so other tracks can reuse them
+    required_inputs:
+      - id: yic_goals
+        key: "startup.yic_goals"
+        label: "2–5 measurable goals for the YIC project (turnover, exports, funding, markets, team)"
+        type: long_text
+
+      - id: yic_project_plan
+        key: "startup.yic_project_plan"
+        label: "Project plan for YIC phase (company + market, project tasks, resourcing, schedule, costs)"
+        type: file
+
+      - id: business_plan
+        key: "startup.business_plan"
+        label: "Business plan (separate or included in project plan)"
+        type: file
+
+      - id: rd_spend_calculation
+        key: "company.rd_spend_calculation"
+        label: "R&D expenditure calculation (one of last 3 years ≥10% of total costs)"
+        type: file
+        optional: true   # can also be embedded in auditor report / business plan
+
+      - id: auditors_report_yic
+        key: "company.auditors_report_yic_eligibility"
+        label: "Auditor's report on eligibility for YIC funding"
+        type: file
+
+      - id: income_statement_current
+        key: "company.income_statement_current"
+        label: "Income statement (no more than 2 months old)"
+        type: file
+
+      - id: balance_sheet_ledger_current
+        key: "company.balance_sheet_ledger_current"
+        label: "Balance sheet ledger for the current accounting period"
+        type: file
+
+      - id: cash_flow_forecast_monthly
+        key: "company.cash_flow_forecast_monthly"
+        label: "Monthly cash flow forecast (current + upcoming months)"
+        type: file
+
+      - id: profit_funding_forecast_annual
+        key: "company.profit_funding_forecast_annual"
+        label: "Annual forecast of profit and funding"
+        type: file

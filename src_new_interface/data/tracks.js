@@ -1,0 +1,849 @@
+export default [
+  {
+    "trackId": "business_plan_basic",
+    "file": "general/business_plan_basic.yaml",
+    "order": 1,
+    "required": true,
+    "category": null,
+    "description": "Complete your business plan information first",
+    "prerequisites": [],
+    "mutually_exclusive_with": [],
+    "is_terminal": false,
+    "definition": {
+      "id": "business_plan_basic",
+      "track": "business_plan",
+      "type": "basic_info",
+      "label": "Business Plan Basic Information",
+      "provider": "InfoFinland / Finnish Enterprise Agencies",
+      "url": "https://www.infofinland.fi/en/work-and-enterprise/starting-a-business-in-finland",
+      "summary": "Collects the essential components of a Finnish business plan, including founder strengths and weaknesses, detailed product or service description, customer needs, competitor analysis, operational logistics, marketing channels, insurance and risk considerations, and a plan for bookkeeping and financial monitoring. This track builds on the initial business idea to create a concise but functional plan.\n",
+      "required_inputs": [
+        {
+          "id": "founder_strengths_weaknesses",
+          "key": "founder.strengths_weaknesses",
+          "label": "Your main strengths and weaknesses as an entrepreneur",
+          "type": "long_text"
+        },
+        {
+          "id": "product_service_description",
+          "key": "business_plan.product_service_description",
+          "label": "Description of the product, goods or service you will offer",
+          "type": "long_text"
+        },
+        {
+          "id": "customer_needs",
+          "key": "business_plan.customer_needs",
+          "label": "Who your customers are and what wishes/needs they have",
+          "type": "long_text"
+        },
+        {
+          "id": "competitors",
+          "key": "business_plan.competitors",
+          "label": "Main competitors and how their products and operating methods compare",
+          "type": "long_text"
+        },
+        {
+          "id": "operation_plan",
+          "key": "business_plan.operation_plan",
+          "label": "Where and how the business will operate (premises, equipment, labour)",
+          "type": "long_text"
+        },
+        {
+          "id": "marketing_channels",
+          "key": "business_plan.marketing_channels",
+          "label": "Channels and media you will use to reach customers",
+          "type": "long_text"
+        },
+        {
+          "id": "risk_and_insurance",
+          "key": "business_plan.risk_and_insurance",
+          "label": "Insurance considerations and risk management",
+          "type": "long_text"
+        },
+        {
+          "id": "bookkeeping_finances",
+          "key": "business_plan.bookkeeping_finances",
+          "label": "Plan for bookkeeping and financial monitoring",
+          "type": "long_text"
+        }
+      ]
+    }
+  },
+  {
+    "trackId": "eligibility_criteria_basic",
+    "file": "general/eligibility_criteria_basic.yaml",
+    "order": 2,
+    "required": true,
+    "category": null,
+    "description": "Complete eligibility criteria to see available funding options",
+    "prerequisites": [
+      "business_plan_basic"
+    ],
+    "mutually_exclusive_with": [],
+    "is_terminal": false,
+    "definition": {
+      "id": "eligibility_criteria_basic",
+      "track": "eligibility",
+      "type": "basic_info",
+      "label": "Eligibility Criteria Basic Information",
+      "provider": "ESPI System",
+      "url": "",
+      "summary": "Collects essential eligibility criteria information needed to determine qualification for various funding programs and grants. This includes company registration status, founder details, scalability indicators, financial metrics, and compliance requirements. Answers are stored in a shared key:answer store so all funding tracks can reuse them.\n",
+      "required_inputs": [
+        {
+          "id": "company_registered",
+          "key": "startup.company_registered",
+          "label": "Is your company registered?",
+          "type": "boolean",
+          "help_text": "Has the company been officially registered with the Finnish Trade Register or equivalent?"
+        },
+        {
+          "id": "full_time_main_focus",
+          "key": "startup.full_time_main_focus",
+          "label": "Is working on this startup your full-time main focus?",
+          "type": "boolean",
+          "help_text": "Are you dedicating full-time effort to developing this startup?"
+        },
+        {
+          "id": "scalable_potential",
+          "key": "startup.scalable_potential",
+          "label": "Does your startup have scalable potential?",
+          "type": "boolean",
+          "help_text": "Can your business model scale significantly without proportional increases in costs?"
+        },
+        {
+          "id": "impact_focus",
+          "key": "startup.impact_focus",
+          "label": "Does your startup have a social or environmental impact focus?",
+          "type": "boolean",
+          "help_text": "Is your startup addressing social or environmental challenges?"
+        },
+        {
+          "id": "conditions_in_place",
+          "key": "startup.conditions_in_place",
+          "label": "Are the basic conditions in place for starting the business?",
+          "type": "boolean",
+          "help_text": "Do you have financing, premises, permits, and other necessary conditions ready?"
+        },
+        {
+          "id": "full_time_continuous",
+          "key": "startup.full_time_continuous",
+          "label": "Will you operate the business full-time and continuously?",
+          "type": "boolean",
+          "help_text": "Do you plan to work on the business full-time without interruptions?"
+        },
+        {
+          "id": "operations_in_finland",
+          "key": "startup.operations_in_finland",
+          "label": "Will your business operations be based in Finland?",
+          "type": "boolean",
+          "help_text": "Is the primary location of your business operations in Finland?"
+        },
+        {
+          "id": "application_before_full_time",
+          "key": "startup.application_before_full_time",
+          "label": "Are you applying before starting full-time operations?",
+          "type": "boolean",
+          "help_text": "Are you submitting this application before you begin full-time business operations?"
+        },
+        {
+          "id": "company_under_5_years",
+          "key": "company.is_under_5_years",
+          "label": "Is your company under 5 years old?",
+          "type": "boolean",
+          "help_text": "Was your company registered less than 5 years ago?"
+        },
+        {
+          "id": "scalable_international",
+          "key": "company.scalable_international",
+          "label": "Does your company have scalable international growth potential?",
+          "type": "boolean",
+          "help_text": "Can your company scale internationally with significant growth potential?"
+        },
+        {
+          "id": "turnover_scalable_over_420k",
+          "key": "company.turnover_scalable_over_420k",
+          "label": "Does your company have significant scalable turnover (over €420k)?",
+          "type": "boolean",
+          "help_text": "Has your company achieved or is on track to achieve turnover over €420,000 with scalable growth?"
+        },
+        {
+          "id": "equity_investments_over_1m",
+          "key": "company.equity_investments_over_1m",
+          "label": "Has your company received equity investments over €1 million?",
+          "type": "boolean",
+          "help_text": "Has your company raised more than €1 million in equity investments?"
+        },
+        {
+          "id": "management_international_expertise",
+          "key": "company.management_international_expertise",
+          "label": "Does your company's management have international expertise?",
+          "type": "boolean",
+          "help_text": "Do key management team members have relevant international business experience?"
+        },
+        {
+          "id": "international_turnover_significant",
+          "key": "company.international_turnover_significant",
+          "label": "Does your company have significant international turnover?",
+          "type": "boolean",
+          "help_text": "Does a significant portion of your company's turnover come from international markets?"
+        },
+        {
+          "id": "missing_financial_statements",
+          "key": "company.missing_financial_statements",
+          "label": "Is your company missing required financial statements?",
+          "type": "boolean",
+          "help_text": "Are you missing any required financial statements or reports?"
+        },
+        {
+          "id": "beneficial_owners_notification_missing",
+          "key": "company.beneficial_owners_notification_missing",
+          "label": "Is your company missing beneficial owner notification?",
+          "type": "boolean",
+          "help_text": "Have you failed to submit the required beneficial owner notification to authorities?"
+        },
+        {
+          "id": "tax_debts_without_plan",
+          "key": "company.tax_debts_without_plan",
+          "label": "Does your company have tax debts without a payment plan?",
+          "type": "boolean",
+          "help_text": "Do you have outstanding tax debts that are not covered by an approved payment plan?"
+        },
+        {
+          "id": "bf_tekes_loan_arrears",
+          "key": "company.bf_tekes_loan_arrears",
+          "label": "Does your company have Business Finland/Tekes loan arrears?",
+          "type": "boolean",
+          "help_text": "Do you have any overdue payments or arrears on Business Finland or Tekes loans?"
+        },
+        {
+          "id": "residence_helsinki",
+          "key": "founder.residence_helsinki",
+          "label": "Do you reside in Helsinki?",
+          "type": "boolean",
+          "help_text": "Is your primary residence in Helsinki, Finland?"
+        },
+        {
+          "id": "transitioning_to_full_time_entrepreneurship",
+          "key": "founder.transitioning_to_full_time_entrepreneurship",
+          "label": "Are you transitioning to full-time entrepreneurship?",
+          "type": "boolean",
+          "help_text": "Are you in the process of moving from employment/unemployment to full-time entrepreneurship?"
+        },
+        {
+          "id": "skills_sufficient",
+          "key": "founder.skills_sufficient",
+          "label": "Do you have sufficient skills for your industry?",
+          "type": "boolean",
+          "help_text": "Do you possess the necessary skills, experience, or qualifications for your business industry?"
+        }
+      ]
+    }
+  },
+  {
+    "trackId": "enterprise_form_basic",
+    "file": "finanical/enterprise_form_basic.yaml",
+    "order": 2,
+    "required": false,
+    "category": "financial",
+    "description": "Choose a suitable Finnish form of enterprise",
+    "prerequisites": [
+      "business_plan_basic"
+    ],
+    "mutually_exclusive_with": [],
+    "is_terminal": false,
+    "definition": {
+      "id": "enterprise_form_basic",
+      "track": "enterprise_form",
+      "type": "legal_structure",
+      "label": "Form of Enterprise – Basic Choice",
+      "provider": "InfoFinland / Finnish Enterprise Agencies",
+      "url": "https://www.infofinland.fi/en/work-and-enterprise/starting-a-business-in-finland",
+      "summary": "Helps the founder choose a suitable Finnish form of enterprise (e.g. private trader, limited company, co-operative, partnership) based on number of founders, risk tolerance, expected turnover and willingness to handle administrative obligations.\n",
+      "required_inputs": [
+        {
+          "id": "number_of_founders",
+          "key": "legal.number_of_founders",
+          "label": "Number of founders/owners",
+          "type": "number"
+        },
+        {
+          "id": "ownership_idea",
+          "key": "legal.ownership_structure",
+          "label": "Planned ownership structure (who owns what share)",
+          "type": "long_text"
+        },
+        {
+          "id": "risk_tolerance",
+          "key": "legal.risk_tolerance",
+          "label": "How important is limiting your personal financial risk?",
+          "type": "long_text"
+        },
+        {
+          "id": "expected_turnover_scale",
+          "key": "finance.expected_turnover_scale",
+          "label": "Expected scale of annual turnover at first (small/moderate/high, with rough euro estimate)",
+          "type": "long_text"
+        },
+        {
+          "id": "admin_preference",
+          "key": "legal.admin_preference",
+          "label": "Preference: very light admin vs. more admin in exchange for limited liability",
+          "type": "long_text"
+        },
+        {
+          "id": "preliminary_form_preference",
+          "key": "legal.preferred_enterprise_form",
+          "label": "Current preference for form of enterprise (e.g. private trader, limited company, co-operative, partnership)",
+          "type": "long_text"
+        }
+      ]
+    }
+  },
+  {
+    "trackId": "numbers_basic",
+    "file": "finanical/numbers_basic.yaml",
+    "order": 2,
+    "required": false,
+    "category": "financial",
+    "description": "Collect essential financial basics for business plan",
+    "prerequisites": [
+      "business_plan_basic"
+    ],
+    "mutually_exclusive_with": [],
+    "is_terminal": false,
+    "definition": {
+      "id": "numbers_basic",
+      "track": "numbers",
+      "type": "basic_financials",
+      "label": "Numbers & Calculations – Basic Financials",
+      "provider": "InfoFinland / Finnish Enterprise Agencies",
+      "url": "https://www.infofinland.fi/en/work-and-enterprise/starting-a-business-in-finland",
+      "summary": "Collects the essential financial basics for a Finnish business plan: initial investments, monthly fixed and variable costs, pricing, and expected sales volumes. These inputs are used to estimate profitability, cash needs, and whether the business can realistically support the founder.\n",
+      "required_inputs": [
+        {
+          "id": "investment_list",
+          "key": "finance.investments",
+          "label": "Initial investments (items and rough cost per item)",
+          "type": "long_text"
+        },
+        {
+          "id": "monthly_fixed_costs",
+          "key": "finance.monthly_fixed_costs",
+          "label": "Monthly fixed costs (rent, insurance, accounting, salaries, etc.)",
+          "type": "long_text"
+        },
+        {
+          "id": "variable_cost_per_unit",
+          "key": "finance.variable_cost_per_unit",
+          "label": "Variable cost per unit (materials, subcontracting, other costs per sale)",
+          "type": "long_text"
+        },
+        {
+          "id": "price_list",
+          "key": "finance.price_list",
+          "label": "Planned prices for main products or services",
+          "type": "long_text"
+        },
+        {
+          "id": "expected_monthly_sales_volume",
+          "key": "finance.expected_monthly_sales_volume",
+          "label": "Expected monthly sales volume (units/customers per month)",
+          "type": "long_text"
+        },
+        {
+          "id": "expected_monthly_revenue",
+          "key": "finance.expected_monthly_revenue",
+          "label": "Estimated monthly revenue based on prices and sales volume",
+          "type": "long_text"
+        }
+      ]
+    }
+  },
+  {
+    "trackId": "insurance_basic",
+    "file": "insurance/insurance_basics.yaml",
+    "order": 2,
+    "required": false,
+    "category": "insurance",
+    "description": "Insurance & Social Security – Basics for entrepreneurs",
+    "prerequisites": [
+      "business_plan_basic"
+    ],
+    "mutually_exclusive_with": [],
+    "is_terminal": false,
+    "definition": {
+      "id": "insurance_basic",
+      "track": "insurance",
+      "type": "social_security_and_risk",
+      "label": "Insurance & Social Security – Basics",
+      "provider": "InfoFinland / Finnish Enterprise Agencies",
+      "url": "https://www.infofinland.fi/en/work-and-enterprise/starting-a-business-in-finland/obligations-of-the-entrepreneur",
+      "summary": "Collects the minimum information needed to decide on statutory YEL pension insurance for the entrepreneur, mandatory insurances for employees, and key voluntary business insurances based on the planned operations and risks.\n",
+      "required_inputs": [
+        {
+          "id": "self_employment_scope",
+          "key": "insurance.self_employment_scope",
+          "label": "Will you work as an entrepreneur in Finland for at least 4 months?",
+          "type": "long_text"
+        },
+        {
+          "id": "estimated_yel_income",
+          "key": "insurance.estimated_yel_income",
+          "label": "Estimated yearly value of your own work input (YEL income, €)",
+          "type": "number"
+        },
+        {
+          "id": "has_employees",
+          "key": "insurance.has_employees_first_year",
+          "label": "Do you plan to have employees during the first year?",
+          "type": "boolean"
+        },
+        {
+          "id": "employee_overview",
+          "key": "insurance.employee_overview",
+          "label": "Rough number and type of employees (if any)",
+          "type": "long_text"
+        },
+        {
+          "id": "operational_risks",
+          "key": "insurance.operational_risks",
+          "label": "Key risk areas (e.g. customer-facing work, healthcare, food, construction, machinery, vehicles)",
+          "type": "long_text"
+        },
+        {
+          "id": "assets_to_insure",
+          "key": "insurance.assets_to_insure",
+          "label": "Significant assets to insure (premises, equipment, inventory, vehicles)",
+          "type": "long_text"
+        }
+      ]
+    }
+  },
+  {
+    "trackId": "startup_foundation_individual_grant",
+    "file": "funding/startup_foundation_individual_grant.yaml",
+    "order": 3,
+    "required": false,
+    "category": "funding",
+    "description": "Startup Foundation Individual Grants - €6,000 over 3 months",
+    "prerequisites": [
+      "business_plan_basic",
+      "eligibility_criteria_basic"
+    ],
+    "mutually_exclusive_with": [
+      "business_finland_yic",
+      "helsinki_startup_grant"
+    ],
+    "is_terminal": false,
+    "definition": {
+      "id": "startup_foundation_individual_grant",
+      "track": "funding",
+      "type": "personal_grant",
+      "label": "Startup Foundation Individual Grants",
+      "provider": "Startup Foundation",
+      "url": "https://www.startup-saatio.fi/individual-grants",
+      "summary": "€6,000 over 3 months for individuals who are pre-company and want to focus full-time on developing and validating a scalable startup idea.\n",
+      "stage": "pre-company",
+      "country": "FI",
+      "eligibility": {
+        "criteria_refs": [
+          {
+            "id": "pre_company_stage",
+            "answer_key": "startup.company_registered",
+            "expected_value": false
+          },
+          {
+            "id": "full_time_commitment",
+            "answer_key": "startup.full_time_main_focus",
+            "expected_value": true
+          },
+          {
+            "id": "scalable_potential",
+            "answer_key": "startup.scalable_potential",
+            "expected_value": true
+          },
+          {
+            "id": "impact_focus",
+            "answer_key": "startup.impact_focus",
+            "expected_value": true
+          }
+        ]
+      },
+      "required_inputs": [
+        {
+          "id": "idea_description",
+          "key": "startup.idea_description",
+          "label": "Description of startup idea or industry to explore",
+          "type": "long_text"
+        },
+        {
+          "id": "scalability_explanation",
+          "key": "startup.scalability_explanation",
+          "label": "Why this can become a scalable startup",
+          "type": "long_text"
+        },
+        {
+          "id": "motivation",
+          "key": "founder.motivation",
+          "label": "Why you started working on this problem",
+          "type": "long_text"
+        },
+        {
+          "id": "three_month_plan",
+          "key": "startup.plan_3_months",
+          "label": "3-month plan with milestones and validation steps",
+          "type": "long_text"
+        },
+        {
+          "id": "time_commitment",
+          "key": "founder.time_commitment",
+          "label": "Explanation of other commitments and weekly hours on the startup",
+          "type": "long_text"
+        },
+        {
+          "id": "future_plan",
+          "key": "startup.post_grant_plan",
+          "label": "Plan for after the 3 months (funding/customers/next steps)",
+          "type": "long_text"
+        },
+        {
+          "id": "experience",
+          "key": "founder.experience_summary",
+          "label": "CV or summary of relevant experience",
+          "type": "long_text"
+        },
+        {
+          "id": "budget",
+          "key": "startup.budget_overview",
+          "label": "Rough (non-itemized) description of how you’ll use the grant",
+          "type": "long_text"
+        }
+      ]
+    }
+  },
+  {
+    "trackId": "business_finland_yic",
+    "file": "funding/business_finland_yic.yaml",
+    "order": 3,
+    "required": false,
+    "category": "funding",
+    "description": "Business Finland YIC Funding - Up to €1,000,000",
+    "prerequisites": [
+      "business_plan_basic",
+      "eligibility_criteria_basic"
+    ],
+    "mutually_exclusive_with": [
+      "startup_foundation_individual_grant",
+      "helsinki_startup_grant"
+    ],
+    "is_terminal": false,
+    "definition": {
+      "id": "business_finland_yic",
+      "track": "funding",
+      "type": "yic_grant",
+      "label": "Business Finland – Young Innovative Company (YIC) Funding",
+      "provider": "Business Finland",
+      "url": "https://www.businessfinland.fi/en/services/funding/funding-services/Young-innovative-companies/",
+      "summary": "Up to €1,000,000 in three grant phases (250k + 250k + 500k) for young, high-growth Finnish startups (under 5 years old) with strong international traction, turnover and equity investments.\n",
+      "stage": "scaleup",
+      "country": "FI",
+      "eligibility": {
+        "criteria_refs": [
+          {
+            "id": "company_registered",
+            "answer_key": "startup.company_registered",
+            "expected_value": true
+          },
+          {
+            "id": "company_under_5_years",
+            "answer_key": "company.is_under_5_years",
+            "expected_value": true
+          },
+          {
+            "id": "scalable_international_growth",
+            "answer_key": "company.scalable_international",
+            "expected_value": true
+          },
+          {
+            "id": "significant_scalable_turnover",
+            "answer_key": "company.turnover_scalable_over_420k",
+            "expected_value": true
+          },
+          {
+            "id": "equity_investments_over_1m",
+            "answer_key": "company.equity_investments_over_1m",
+            "expected_value": true
+          },
+          {
+            "id": "management_international_expertise",
+            "answer_key": "company.management_international_expertise",
+            "expected_value": true
+          },
+          {
+            "id": "significant_international_turnover",
+            "answer_key": "company.international_turnover_significant",
+            "expected_value": true
+          },
+          {
+            "id": "missing_financial_statements",
+            "answer_key": "company.missing_financial_statements",
+            "expected_value": false
+          },
+          {
+            "id": "missing_beneficial_owner_notification",
+            "answer_key": "company.beneficial_owners_notification_missing",
+            "expected_value": false
+          },
+          {
+            "id": "tax_debts_without_payment_plan",
+            "answer_key": "company.tax_debts_without_plan",
+            "expected_value": false
+          },
+          {
+            "id": "bf_tekes_loan_arrears",
+            "answer_key": "company.bf_tekes_loan_arrears",
+            "expected_value": false
+          }
+        ]
+      },
+      "required_inputs": [
+        {
+          "id": "yic_goals",
+          "key": "startup.yic_goals",
+          "label": "2–5 measurable goals for the YIC project (turnover, exports, funding, markets, team)",
+          "type": "long_text"
+        },
+        {
+          "id": "yic_project_plan",
+          "key": "startup.yic_project_plan",
+          "label": "Project plan for YIC phase (company + market, project tasks, resourcing, schedule, costs)",
+          "type": "file"
+        },
+        {
+          "id": "business_plan",
+          "key": "startup.business_plan",
+          "label": "Business plan (separate or included in project plan)",
+          "type": "file"
+        },
+        {
+          "id": "rd_spend_calculation",
+          "key": "company.rd_spend_calculation",
+          "label": "R&D expenditure calculation (one of last 3 years ≥10% of total costs)",
+          "type": "file",
+          "optional": true
+        },
+        {
+          "id": "auditors_report_yic",
+          "key": "company.auditors_report_yic_eligibility",
+          "label": "Auditor's report on eligibility for YIC funding",
+          "type": "file"
+        },
+        {
+          "id": "income_statement_current",
+          "key": "company.income_statement_current",
+          "label": "Income statement (no more than 2 months old)",
+          "type": "file"
+        },
+        {
+          "id": "balance_sheet_ledger_current",
+          "key": "company.balance_sheet_ledger_current",
+          "label": "Balance sheet ledger for the current accounting period",
+          "type": "file"
+        },
+        {
+          "id": "cash_flow_forecast_monthly",
+          "key": "company.cash_flow_forecast_monthly",
+          "label": "Monthly cash flow forecast (current + upcoming months)",
+          "type": "file"
+        },
+        {
+          "id": "profit_funding_forecast_annual",
+          "key": "company.profit_funding_forecast_annual",
+          "label": "Annual forecast of profit and funding",
+          "type": "file"
+        }
+      ]
+    }
+  },
+  {
+    "trackId": "helsinki_startup_grant",
+    "file": "funding/helsinki_startup_grant.yaml",
+    "order": 3,
+    "required": false,
+    "category": "funding",
+    "description": "Helsinki Startup Grant - Personal income support for entrepreneurs",
+    "prerequisites": [
+      "business_plan_basic",
+      "eligibility_criteria_basic"
+    ],
+    "mutually_exclusive_with": [
+      "startup_foundation_individual_grant",
+      "business_finland_yic"
+    ],
+    "is_terminal": false,
+    "definition": {
+      "id": "helsinki_startup_grant",
+      "track": "funding",
+      "type": "startup_grant",
+      "label": "Helsinki Startup Grant",
+      "provider": "Helsinki Employment Services / City of Helsinki",
+      "url": "https://www.hel.fi/en/business-and-work/start-a-business/startup-grant",
+      "summary": "Startup grant to secure personal income for new full-time entrepreneurs in Helsinki. Typically around the Kela basic unemployment allowance per month for an initial 6 months, extendable up to 12 months in total.\n",
+      "stage": "early-company",
+      "country": "FI",
+      "city": "Helsinki",
+      "eligibility": {
+        "criteria_refs": [
+          {
+            "id": "residence_helsinki",
+            "answer_key": "founder.residence_helsinki",
+            "expected_value": true
+          },
+          {
+            "id": "transitioning_to_full_time_entrepreneurship",
+            "answer_key": "founder.transitioning_to_full_time_entrepreneurship",
+            "expected_value": true
+          },
+          {
+            "id": "sufficient_skills_for_industry",
+            "answer_key": "founder.skills_sufficient",
+            "expected_value": true
+          },
+          {
+            "id": "conditions_in_place_for_business",
+            "answer_key": "startup.conditions_in_place",
+            "expected_value": true
+          },
+          {
+            "id": "full_time_continuous_operations",
+            "answer_key": "startup.full_time_continuous",
+            "expected_value": true
+          },
+          {
+            "id": "operations_in_finland",
+            "answer_key": "startup.operations_in_finland",
+            "expected_value": true
+          },
+          {
+            "id": "application_before_full_time",
+            "answer_key": "startup.application_before_full_time",
+            "expected_value": true
+          }
+        ]
+      },
+      "required_inputs": [
+        {
+          "id": "business_plan",
+          "key": "startup.business_plan",
+          "label": "Business plan",
+          "type": "file"
+        },
+        {
+          "id": "financial_calculations",
+          "key": "startup.financial_calculations",
+          "label": "Sales, funding and profitability calculations",
+          "type": "file"
+        },
+        {
+          "id": "tax_certificate",
+          "key": "founder.tax_certificate",
+          "label": "Tax certificate of paid taxes / tax debt certificate",
+          "type": "file"
+        },
+        {
+          "id": "funding_proof",
+          "key": "startup.funding_proof",
+          "label": "Proof that required business funding has been obtained",
+          "type": "file"
+        },
+        {
+          "id": "cv",
+          "key": "founder.cv",
+          "label": "Up-to-date CV",
+          "type": "file"
+        },
+        {
+          "id": "collaboration_agreements",
+          "key": "startup.collaboration_agreements",
+          "label": "Collaboration agreements (if applicable)",
+          "type": "file",
+          "optional": true
+        },
+        {
+          "id": "lease_agreement",
+          "key": "startup.lease_agreement",
+          "label": "Lease agreement for premises (if applicable)",
+          "type": "file",
+          "optional": true
+        },
+        {
+          "id": "permits",
+          "key": "startup.permits",
+          "label": "Necessary permits/notifications for starting the business (if applicable)",
+          "type": "file",
+          "optional": true
+        },
+        {
+          "id": "debt_repayment_plan",
+          "key": "founder.debt_repayment_plan",
+          "label": "Debt repayment plan (if you have payment defaults or tax debt)",
+          "type": "file",
+          "optional": true
+        }
+      ]
+    }
+  },
+  {
+    "trackId": "registration_submit",
+    "file": "../submission/submission.yaml",
+    "order": 4,
+    "required": false,
+    "category": "submission",
+    "description": "Submit Company Registration - Final step to register your company",
+    "prerequisites": [
+      "business_plan_basic",
+      "enterprise_form_basic",
+      "numbers_basic"
+    ],
+    "mutually_exclusive_with": [],
+    "is_terminal": true,
+    "definition": {
+      "id": "registration_submit",
+      "track": "registration",
+      "type": "final_step",
+      "label": "Submit Company Registration",
+      "provider": "Suomi.fi / YTJ",
+      "url": "https://www.suomi.fi/company",
+      "summary": "Final junction in the track. Confirms that basic idea, business plan, numbers & calculations, and form of enterprise are complete, and guides the user to submit the official company registration via Suomi.fi/YTJ.\n",
+      "stage": "submit_registration",
+      "is_terminal": true,
+      "required_inputs": [
+        {
+          "id": "confirm_tracks_complete",
+          "key": "registration.tracks_complete_confirmation",
+          "label": "Confirm that idea, business plan, numbers and legal form are complete",
+          "type": "boolean"
+        },
+        {
+          "id": "registration_channel",
+          "key": "registration.channel",
+          "label": "Where you plan to submit registration (online YTJ, paper form, accountant, etc.)",
+          "type": "long_text"
+        },
+        {
+          "id": "registration_timing",
+          "key": "registration.planned_submission_date",
+          "label": "Planned date or timeframe for submitting the registration",
+          "type": "long_text"
+        },
+        {
+          "id": "final_questions",
+          "key": "registration.final_questions",
+          "label": "Any remaining questions or concerns before submitting",
+          "type": "long_text"
+        }
+      ]
+    }
+  }
+]

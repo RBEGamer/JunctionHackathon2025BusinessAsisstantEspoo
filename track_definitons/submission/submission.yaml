@@ -1,0 +1,39 @@
+version: 1
+options:
+  - id: registration_submit
+    track: registration
+    type: final_step
+    label: "Submit Company Registration"
+    provider: "Suomi.fi / YTJ"
+    url: "https://www.suomi.fi/company"
+
+    summary: >
+      Final junction in the track. Confirms that basic idea, business plan,
+      numbers & calculations, and form of enterprise are complete, and guides
+      the user to submit the official company registration via Suomi.fi/YTJ.
+      Links:
+      - Yritysjuristi – Legal Services (https://www.yritysjuristi.fi)
+
+    stage: "submit_registration"
+    is_terminal: true
+
+    required_inputs:
+      - id: confirm_tracks_complete
+        key: "registration.tracks_complete_confirmation"
+        label: "Confirm that idea, business plan, numbers and legal form are complete"
+        type: boolean
+
+      - id: registration_channel
+        key: "registration.channel"
+        label: "Where you plan to submit registration (online YTJ, paper form, accountant, etc.)"
+        type: long_text
+
+      - id: registration_timing
+        key: "registration.planned_submission_date"
+        label: "Planned date or timeframe for submitting the registration"
+        type: long_text
+
+      - id: final_questions
+        key: "registration.final_questions"
+        label: "Any remaining questions or concerns before submitting"
+        type: long_text

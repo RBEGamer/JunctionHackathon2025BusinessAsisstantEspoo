@@ -1,0 +1,107 @@
+version: 1
+options:
+  - id: helsinki_startup_grant
+    track: funding
+    type: startup_grant
+    label: "Helsinki Startup Grant"
+    provider: "Helsinki Employment Services / City of Helsinki"
+    url: "https://www.hel.fi/en/business-and-work/start-a-business/startup-grant"
+
+    summary: >
+      Startup grant to secure personal income for new full-time entrepreneurs
+      in Helsinki. Typically around the Kela basic unemployment allowance per
+      month for an initial 6 months, extendable up to 12 months in total.
+      Links:
+      - Business Finland – Funding for Companies (https://www.businessfinland.fi/en)
+      - Finnvera – Loans & Guarantees for Entrepreneurs (https://www.finnvera.fi/eng)
+      - Start-up Grant (Info via TE Services) (https://www.te-palvelut.fi/en)
+      - Finnish Business Mentors (Yrityskummit) (https://www.yrityskummit.fi)
+      - Uusyrityskeskus – Finnish Enterprise Agencies (https://www.uusyrityskeskus.fi/in-english)
+
+    stage: "early-company"
+    country: "FI"
+    city: "Helsinki"
+
+    # Criteria references; system resolves these IDs via a shared criteria DB
+    # and checks values from the global answer store under answer_key.
+    eligibility:
+      criteria_refs:
+        - id: residence_helsinki
+          answer_key: "founder.residence_helsinki"
+          expected_value: true
+
+        - id: transitioning_to_full_time_entrepreneurship
+          answer_key: "founder.transitioning_to_full_time_entrepreneurship"
+          expected_value: true
+
+        - id: sufficient_skills_for_industry
+          answer_key: "founder.skills_sufficient"
+          expected_value: true
+
+        - id: conditions_in_place_for_business
+          answer_key: "startup.conditions_in_place"
+          expected_value: true
+          # e.g. financing, premises, permits in place
+
+        - id: full_time_continuous_operations
+          answer_key: "startup.full_time_continuous"
+          expected_value: true
+
+        - id: operations_in_finland
+          answer_key: "startup.operations_in_finland"
+          expected_value: true
+
+        - id: application_before_full_time
+          answer_key: "startup.application_before_full_time"
+          expected_value: true
+
+    # Minimal user inputs this track needs; answers stored in a shared key:answer store
+    required_inputs:
+      - id: business_plan
+        key: "startup.business_plan"
+        label: "Business plan"
+        type: file
+
+      - id: financial_calculations
+        key: "startup.financial_calculations"
+        label: "Sales, funding and profitability calculations"
+        type: file
+
+      - id: tax_certificate
+        key: "founder.tax_certificate"
+        label: "Tax certificate of paid taxes / tax debt certificate"
+        type: file
+
+      - id: funding_proof
+        key: "startup.funding_proof"
+        label: "Proof that required business funding has been obtained"
+        type: file
+
+      - id: cv
+        key: "founder.cv"
+        label: "Up-to-date CV"
+        type: file
+
+      - id: collaboration_agreements
+        key: "startup.collaboration_agreements"
+        label: "Collaboration agreements (if applicable)"
+        type: file
+        optional: true
+
+      - id: lease_agreement
+        key: "startup.lease_agreement"
+        label: "Lease agreement for premises (if applicable)"
+        type: file
+        optional: true
+
+      - id: permits
+        key: "startup.permits"
+        label: "Necessary permits/notifications for starting the business (if applicable)"
+        type: file
+        optional: true
+
+      - id: debt_repayment_plan
+        key: "founder.debt_repayment_plan"
+        label: "Debt repayment plan (if you have payment defaults or tax debt)"
+        type: file
+        optional: true

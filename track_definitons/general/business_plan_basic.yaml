@@ -1,0 +1,65 @@
+version: 1
+options:
+  - id: business_plan_basic
+    track: business_plan
+    type: basic_info
+    label: "Business Plan Basic Information"
+    provider: "InfoFinland / Finnish Enterprise Agencies"
+    url: "https://www.infofinland.fi/en/work-and-enterprise/starting-a-business-in-finland"
+    
+    summary: >
+      Collects the essential components of a Finnish business plan, including
+      founder strengths and weaknesses, detailed product or service description,
+      customer needs, competitor analysis, operational logistics, marketing
+      channels, insurance and risk considerations, and a plan for bookkeeping
+      and financial monitoring. This track builds on the initial business idea
+      to create a concise but functional plan.
+      Links:
+      - Business plan document (add or upload the finalized plan that captures the sections collected here)
+      - UN Association of Finland – Sustainable Development (https://www.ykliitto.fi/en)
+      - Ministry of the Environment – Environmental Information (https://www.ymparisto.fi/en-us)
+      - Rinki – Producer Responsibility for Packaging (https://www.rinkiin.fi/en)
+      - Kierratys.info – Recycling Info (https://www.kierratys.info)
+      - Circular Design Finland (https://www.circulardesignsuomi.fi/en)
+
+    # What the chatbot/flow must collect at minimum for THIS track.
+    required_inputs:
+      - id: founder_strengths_weaknesses
+        key: "founder.strengths_weaknesses"
+        label: "Your main strengths and weaknesses as an entrepreneur"
+        type: long_text
+
+      - id: product_service_description
+        key: "business_plan.product_service_description"
+        label: "Description of the product, goods or service you will offer"
+        type: long_text
+
+      - id: customer_needs
+        key: "business_plan.customer_needs"
+        label: "Who your customers are and what wishes/needs they have"
+        type: long_text
+
+      - id: competitors
+        key: "business_plan.competitors"
+        label: "Main competitors and how their products and operating methods compare"
+        type: long_text
+
+      - id: operation_plan
+        key: "business_plan.operation_plan"
+        label: "Where and how the business will operate (premises, equipment, labour)"
+        type: long_text
+
+      - id: marketing_channels
+        key: "business_plan.marketing_channels"
+        label: "Channels and media you will use to reach customers"
+        type: long_text
+
+      - id: risk_and_insurance
+        key: "business_plan.risk_and_insurance"
+        label: "Insurance considerations and risk management"
+        type: long_text
+
+      - id: bookkeeping_finances
+        key: "business_plan.bookkeeping_finances"
+        label: "Plan for bookkeeping and financial monitoring"
+        type: long_text

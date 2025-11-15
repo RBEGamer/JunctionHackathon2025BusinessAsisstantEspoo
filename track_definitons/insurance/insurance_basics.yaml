@@ -1,0 +1,51 @@
+version: 1
+options:
+  - id: insurance_basic
+    track: insurance
+    type: social_security_and_risk
+    label: "Insurance & Social Security – Basics"
+    provider: "InfoFinland / Finnish Enterprise Agencies"
+    url: "https://www.infofinland.fi/en/work-and-enterprise/starting-a-business-in-finland/obligations-of-the-entrepreneur"
+
+    summary: >
+      Collects the minimum information needed to decide on statutory YEL
+      pension insurance for the entrepreneur, mandatory insurances for
+      employees, and key voluntary business insurances based on the
+      planned operations and risks.
+      Links:
+      - Varma – YEL income calculator (https://www.varma.fi/en)
+      - Yrittäjäkassa – Entrepreneur Unemployment Fund (https://www.yrittajakassa.fi)
+      - Tukes – Finnish Safety and Chemicals Agency (https://tukes.fi/en)
+      - Tukes – Surveillance (Who monitors what?) (https://tukes.fi/en/dothis)
+      - I Know My Products – Safety training (https://www.tunnentuotteeni.fi)
+
+    required_inputs:
+      - id: self_employment_scope
+        key: "insurance.self_employment_scope"
+        label: "Will you work as an entrepreneur in Finland for at least 4 months?"
+        type: long_text
+
+      - id: estimated_yel_income
+        key: "insurance.estimated_yel_income"
+        label: "Estimated yearly value of your own work input (YEL income, €)"
+        type: number
+
+      - id: has_employees
+        key: "insurance.has_employees_first_year"
+        label: "Do you plan to have employees during the first year?"
+        type: boolean
+
+      - id: employee_overview
+        key: "insurance.employee_overview"
+        label: "Rough number and type of employees (if any)"
+        type: long_text
+
+      - id: operational_risks
+        key: "insurance.operational_risks"
+        label: "Key risk areas (e.g. customer-facing work, healthcare, food, construction, machinery, vehicles)"
+        type: long_text
+
+      - id: assets_to_insure
+        key: "insurance.assets_to_insure"
+        label: "Significant assets to insure (premises, equipment, inventory, vehicles)"
+        type: long_text

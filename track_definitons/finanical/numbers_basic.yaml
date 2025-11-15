@@ -1,0 +1,49 @@
+version: 1
+options:
+  - id: numbers_basic
+    track: numbers
+    type: basic_financials
+    label: "Numbers & Calculations – Basic Financials"
+    provider: "InfoFinland / Finnish Enterprise Agencies"
+    url: "https://www.infofinland.fi/en/work-and-enterprise/starting-a-business-in-finland"
+
+    summary: >
+      Collects the essential financial basics for a Finnish business plan:
+      initial investments, monthly fixed and variable costs, pricing, and
+      expected sales volumes. These inputs are used to estimate profitability,
+      cash needs, and whether the business can realistically support the
+      founder.
+      Links:
+      - Vero – MyTax service (https://www.vero.fi/en/e-file/mytax)
+      - Statistics Finland – Official Statistics (https://www.stat.fi/index_en)
+
+    required_inputs:
+      - id: investment_list
+        key: "finance.investments"
+        label: "Initial investments (items and rough cost per item)"
+        type: long_text
+
+      - id: monthly_fixed_costs
+        key: "finance.monthly_fixed_costs"
+        label: "Monthly fixed costs (rent, insurance, accounting, salaries, etc.)"
+        type: long_text
+
+      - id: variable_cost_per_unit
+        key: "finance.variable_cost_per_unit"
+        label: "Variable cost per unit (materials, subcontracting, other costs per sale)"
+        type: long_text
+
+      - id: price_list
+        key: "finance.price_list"
+        label: "Planned prices for main products or services"
+        type: long_text
+
+      - id: expected_monthly_sales_volume
+        key: "finance.expected_monthly_sales_volume"
+        label: "Expected monthly sales volume (units/customers per month)"
+        type: long_text
+
+      - id: expected_monthly_revenue
+        key: "finance.expected_monthly_revenue"
+        label: "Estimated monthly revenue based on prices and sales volume"
+        type: long_text

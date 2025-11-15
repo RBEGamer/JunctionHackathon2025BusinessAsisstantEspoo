@@ -1,0 +1,127 @@
+version: 1
+description: >
+  Defines the routing flow between tracks using prerequisites. The system builds
+  a graph structure where tracks depend on prerequisites being completed.
+  Users can only access tracks when all prerequisites are met and eligibility
+  criteria are satisfied.
+
+# Entry point: the first track users shonuld complete
+entry_track: business_plan_basic
+
+# Track routing configuration - uses prerequisites to build a dependency graph
+routing:
+  # Business Plan Basic - starting point (no prerequisites)
+  - track_id: business_plan_basic
+    file: general/business_plan_basic.yaml
+    required: true
+    description: "Complete your business plan information first"
+    order: 1
+
+  # Eligibility Criteria Basic - requires business plan
+  - track_id: eligibility_criteria_basic
+    file: general/eligibility_criteria_basic.yaml
+    required: true
+    description: "Complete eligibility criteria to see available funding options"
+    prerequisites:
+      - business_plan_basic
+    order: 2
+
+  # Financial tracks - can be done in parallel with eligibility or after business plan
+  - track_id: enterprise_form_basic
+    file: finanical/enterprise_form_basic.yaml
+    required: false
+    description: "Choose a suitable Finnish form of enterprise"
+    category: financial
+    prerequisites:
+      - business_plan_basic
+    order: 2
+
+  - track_id: numbers_basic
+    file: finanical/numbers_basic.yaml
+    required: false
+    description: "Collect essential financial basics for business plan"
+    category: financial
+    prerequisites:
+      - business_plan_basic
+    order: 2
+
+  # Insurance track - can be done in parallel with financial tracks
+  - track_id: insurance_basic
+    file: insurance/insurance_basics.yaml
+    required: false
+    description: "Insurance & Social Security – Basics for entrepreneurs"
+    category: insurance
+    prerequisites:
+      - business_plan_basic
+    order: 2
+
+  # Funding tracks - user can choose ONE after eligibility (mutually exclusive)
+  # Each funding track requires both business_plan_basic and eligibility_criteria_basic
+  - track_id: startup_foundation_individual_grant
+    file: funding/startup_foundation_individual_grant.yaml
+    required: false
+    description: "Startup Foundation Individual Grants - €6,000 over 3 months"
+    category: funding
+    prerequisites:
+      - business_plan_basic
+      - eligibility_criteria_basic
+    order: 3
+    mutually_exclusive_with:
+      - business_finland_yic
+      - helsinki_startup_grant
+
+  - track_id: business_finland_yic
+    file: funding/business_finland_yic.yaml
+    required: false
+    description: "Business Finland YIC Funding - Up to €1,000,000"
+    category: funding
+    prerequisites:
+      - business_plan_basic
+      - eligibility_criteria_basic
+    order: 3
+    mutually_exclusive_with:
+      - startup_foundation_individual_grant
+      - helsinki_startup_grant
+
+  - track_id: helsinki_startup_grant
+    file: funding/helsinki_startup_grant.yaml
+    required: false
+    description: "Helsinki Startup Grant - Personal income support for entrepreneurs"
+    category: funding
+    prerequisites:
+      - business_plan_basic
+      - eligibility_criteria_basic
+    order: 3
+    mutually_exclusive_with:
+      - startup_foundation_individual_grant
+      - business_finland_yic
+
+  # Final submission - requires core business planning tracks
+  - track_id: registration_submit
+    file: submission/submission.yaml
+    required: false
+    description: "Submit Company Registration - Final step to register your company"
+    category: submission
+    prerequisites:
+      - business_plan_basic
+      - enterprise_form_basic
+      - numbers_basic
+    order: 4
+    is_terminal: true
+
+# Graph structure:
+# business_plan_basic (order: 1)
+#   ↓
+# [User can complete any/all of:] (order: 2)
+#   - eligibility_criteria_basic (required for funding)
+#   - enterprise_form_basic (financial) [required for submission]
+#   - numbers_basic (financial) [required for submission]
+#   - insurance_basic (insurance)
+#   ↓
+# [User selects ONE of:] (order: 3, mutually exclusive)
+#   - startup_foundation_individual_grant
+#   - business_finland_yic
+#   - helsinki_startup_grant
+#   ↓
+# registration_submit (order: 4, terminal) [requires: business_plan_basic, enterprise_form_basic, numbers_basic]
+

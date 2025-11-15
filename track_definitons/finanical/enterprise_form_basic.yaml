@@ -1,0 +1,47 @@
+version: 1
+options:
+  - id: enterprise_form_basic
+    track: enterprise_form
+    type: legal_structure
+    label: "Form of Enterprise – Basic Choice"
+    provider: "InfoFinland / Finnish Enterprise Agencies"
+    url: "https://www.infofinland.fi/en/work-and-enterprise/starting-a-business-in-finland"
+
+    summary: >
+      Helps the founder choose a suitable Finnish form of enterprise
+      (e.g. private trader, limited company, co-operative, partnership) based
+      on number of founders, risk tolerance, expected turnover and willingness
+      to handle administrative obligations.
+      Links:
+      - PRH – Finnish Patent and Registration Office (https://www.prh.fi/en)
+
+    required_inputs:
+      - id: number_of_founders
+        key: "legal.number_of_founders"
+        label: "Number of founders/owners"
+        type: number
+
+      - id: ownership_idea
+        key: "legal.ownership_structure"
+        label: "Planned ownership structure (who owns what share)"
+        type: long_text
+
+      - id: risk_tolerance
+        key: "legal.risk_tolerance"
+        label: "How important is limiting your personal financial risk?"
+        type: long_text
+
+      - id: expected_turnover_scale
+        key: "finance.expected_turnover_scale"
+        label: "Expected scale of annual turnover at first (small/moderate/high, with rough euro estimate)"
+        type: long_text
+
+      - id: admin_preference
+        key: "legal.admin_preference"
+        label: "Preference: very light admin vs. more admin in exchange for limited liability"
+        type: long_text
+
+      - id: preliminary_form_preference
+        key: "legal.preferred_enterprise_form"
+        label: "Current preference for form of enterprise (e.g. private trader, limited company, co-operative, partnership)"
+        type: long_text

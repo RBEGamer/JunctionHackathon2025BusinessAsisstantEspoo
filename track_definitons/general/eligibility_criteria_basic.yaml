@@ -1,0 +1,148 @@
+version: 1
+options:
+  - id: eligibility_criteria_basic
+    track: eligibility
+    type: basic_info
+    label: "Eligibility Criteria Basic Information"
+    provider: "ESPI System"
+    url: ""
+    
+    summary: >
+      Collects essential eligibility criteria information needed to determine
+      qualification for various funding programs and grants. This includes company
+      registration status, founder details, scalability indicators, financial
+      metrics, and compliance requirements. 
+      Occupational Safety & Health Administration (https://www.tyosuojelu.fi/en)
+
+    # What the chatbot/flow must collect at minimum for THIS track.
+    # These answers are used by funding tracks to check eligibility criteria.
+    required_inputs:
+      # Startup/Company Status Questions
+      - id: company_registered
+        key: "startup.company_registered"
+        label: "Is your company registered?"
+        type: boolean
+        help_text: "Has the company been officially registered with the Finnish Trade Register or equivalent?"
+
+      - id: full_time_main_focus
+        key: "startup.full_time_main_focus"
+        label: "Is working on this startup your full-time main focus?"
+        type: boolean
+        help_text: "Are you dedicating full-time effort to developing this startup?"
+
+      - id: scalable_potential
+        key: "startup.scalable_potential"
+        label: "Does your startup have scalable potential?"
+        type: boolean
+        help_text: "Can your business model scale significantly without proportional increases in costs?"
+
+      - id: impact_focus
+        key: "startup.impact_focus"
+        label: "Does your startup have a social or environmental impact focus?"
+        type: boolean
+        help_text: "Is your startup addressing social or environmental challenges?"
+
+      - id: conditions_in_place
+        key: "startup.conditions_in_place"
+        label: "Are the basic conditions in place for starting the business?"
+        type: boolean
+        help_text: "Do you have financing, premises, permits, and other necessary conditions ready?"
+
+      - id: full_time_continuous
+        key: "startup.full_time_continuous"
+        label: "Will you operate the business full-time and continuously?"
+        type: boolean
+        help_text: "Do you plan to work on the business full-time without interruptions?"
+
+      - id: operations_in_finland
+        key: "startup.operations_in_finland"
+        label: "Will your business operations be based in Finland?"
+        type: boolean
+        help_text: "Is the primary location of your business operations in Finland?"
+
+      - id: application_before_full_time
+        key: "startup.application_before_full_time"
+        label: "Are you applying before starting full-time operations?"
+        type: boolean
+        help_text: "Are you submitting this application before you begin full-time business operations?"
+
+      # Company Details (for established companies)
+      - id: company_under_5_years
+        key: "company.is_under_5_years"
+        label: "Is your company under 5 years old?"
+        type: boolean
+        help_text: "Was your company registered less than 5 years ago?"
+
+      - id: scalable_international
+        key: "company.scalable_international"
+        label: "Does your company have scalable international growth potential?"
+        type: boolean
+        help_text: "Can your company scale internationally with significant growth potential?"
+
+      - id: turnover_scalable_over_420k
+        key: "company.turnover_scalable_over_420k"
+        label: "Does your company have significant scalable turnover (over €420k)?"
+        type: boolean
+        help_text: "Has your company achieved or is on track to achieve turnover over €420,000 with scalable growth?"
+
+      - id: equity_investments_over_1m
+        key: "company.equity_investments_over_1m"
+        label: "Has your company received equity investments over €1 million?"
+        type: boolean
+        help_text: "Has your company raised more than €1 million in equity investments?"
+
+      - id: management_international_expertise
+        key: "company.management_international_expertise"
+        label: "Does your company's management have international expertise?"
+        type: boolean
+        help_text: "Do key management team members have relevant international business experience?"
+
+      - id: international_turnover_significant
+        key: "company.international_turnover_significant"
+        label: "Does your company have significant international turnover?"
+        type: boolean
+        help_text: "Does a significant portion of your company's turnover come from international markets?"
+
+      # Compliance and Risk Questions (must be FALSE for eligibility)
+      - id: missing_financial_statements
+        key: "company.missing_financial_statements"
+        label: "Is your company missing required financial statements?"
+        type: boolean
+        help_text: "Are you missing any required financial statements or reports?"
+
+      - id: beneficial_owners_notification_missing
+        key: "company.beneficial_owners_notification_missing"
+        label: "Is your company missing beneficial owner notification?"
+        type: boolean
+        help_text: "Have you failed to submit the required beneficial owner notification to authorities?"
+
+      - id: tax_debts_without_plan
+        key: "company.tax_debts_without_plan"
+        label: "Does your company have tax debts without a payment plan?"
+        type: boolean
+        help_text: "Do you have outstanding tax debts that are not covered by an approved payment plan?"
+
+      - id: bf_tekes_loan_arrears
+        key: "company.bf_tekes_loan_arrears"
+        label: "Does your company have Business Finland/Tekes loan arrears?"
+        type: boolean
+        help_text: "Do you have any overdue payments or arrears on Business Finland or Tekes loans?"
+
+      # Founder Details
+      - id: residence_helsinki
+        key: "founder.residence_helsinki"
+        label: "Do you reside in Helsinki?"
+        type: boolean
+        help_text: "Is your primary residence in Helsinki, Finland?"
+
+      - id: transitioning_to_full_time_entrepreneurship
+        key: "founder.transitioning_to_full_time_entrepreneurship"
+        label: "Are you transitioning to full-time entrepreneurship?"
+        type: boolean
+        help_text: "Are you in the process of moving from employment/unemployment to full-time entrepreneurship?"
+
+      - id: skills_sufficient
+        key: "founder.skills_sufficient"
+        label: "Do you have sufficient skills for your industry?"
+        type: boolean
+        help_text: "Do you possess the necessary skills, experience, or qualifications for your business industry?"

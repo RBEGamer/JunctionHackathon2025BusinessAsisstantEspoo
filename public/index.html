@@ -2,47 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Redirecting…</title>
-    <meta http-equiv="refresh" content="0; url=new-interface/" />
-    <style>
-      body {
-        font-family: sans-serif;
-        background: #f8f8f8;
-        color: #1d2b31;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        margin: 0;
-      }
-      .notice {
-        background: #ffffff;
-        padding: 1.5rem 2rem;
-        border-radius: 0.75rem;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-        text-align: center;
-      }
-      a {
-        color: #0050bb;
-        text-decoration: none;
-        font-weight: 600;
-      }
-    </style>
+    <title>ESPI Startup Roadmap</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="alternate icon" href="./favicon.svg">
+    <link rel="apple-touch-icon" href="./favicon.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="notice">
-      <p>You are being redirected to the new interface…</p>
-      <p>
-        If you are not redirected automatically,
-        <a href="/new-interface/">click here</a>.
-      </p>
-    </div>
-    <script>
-      const basePath = window.location.pathname.endsWith('/')
-        ? window.location.pathname
-        : `${window.location.pathname}/`;
-      window.location.replace(`${basePath}new-interface/`);
-    </script>
+    <div id="root"></div>
+    <script type="module" src="./bundle.js"></script>
   </body>
 </html>

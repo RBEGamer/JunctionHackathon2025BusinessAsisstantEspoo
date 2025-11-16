@@ -11,7 +11,23 @@ const createInitialProgressData = () => stations.map(s => ({
   subpoints: s.subpoints.map(sp => ({ ...sp })),
 }));
 
+const determineBasePath = () => {
+  if (typeof window === 'undefined') {
+    return '/'
+  }
+
+  const isGithubPages = window.location.hostname.endsWith('github.io')
+  if (!isGithubPages) {
+    return '/'
+  }
+
+  const pathSegments = window.location.pathname.split('/').filter(Boolean)
+  const repoSegment = pathSegments[0]
+  return repoSegment ? `/${repoSegment}` : '/'
+}
+
 function App() {
+  const basePath = determineBasePath()
   const [progressData, setProgressData] = useState(() => {
     const saved = localStorage.getItem('entrepreneur-progress');
     if (saved) {
@@ -73,7 +89,7 @@ function App() {
   };
 
   return (
-    <Router basename="/new-interface">
+    <Router basename={basePath}>
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
         <nav className="bg-white shadow-sm border-b border-gray-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

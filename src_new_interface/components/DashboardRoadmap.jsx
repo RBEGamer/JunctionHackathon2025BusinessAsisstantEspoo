@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { CheckCircle2, Circle, ArrowRight, Calendar, Target, Sparkles, Building2, Lightbulb, Edit2, Save, X, Lock, ClipboardList } from 'lucide-react'
-import { stations, calculateProgress, getOverallProgress, getAvailableStations, canScheduleAppointment, REQUIRED_STATIONS_FOR_APPOINTMENT, isStationAvailable, hasCompletedFundingTrack } from '../data/stations'
+import { stations, calculateProgress, getOverallProgress, getAvailableStations, canScheduleAppointment, REQUIRED_STATIONS_FOR_APPOINTMENT, isStationAvailable } from '../data/stations'
 import AppointmentScheduling from './AppointmentScheduling'
 import AnsweredSummary from './AnsweredSummary'
 

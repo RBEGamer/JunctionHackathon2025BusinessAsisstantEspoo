@@ -4,6 +4,18 @@ import tracks from './tracks'
 // For appointments we'll require these track ids (matches routing registration prerequisites)
 export const REQUIRED_STATIONS_FOR_APPOINTMENT = ['business_plan_basic', 'enterprise_form_basic', 'numbers_basic', 'registration_submit'];
 
+const isBooleanAnswered = (value) => {
+  if (value === true || value === false) return true;
+  if (typeof value === 'string') {
+    const normalized = value.trim().toLowerCase();
+    return normalized === 'true' || normalized === 'false' || normalized === 'yes' || normalized === 'no';
+  }
+  if (typeof value === 'number') {
+    return value === 1 || value === 0;
+  }
+  return false;
+};
+
 export const stations = tracks.map(t => {
   const def = t.definition || {};
   const inputs = def.required_inputs || [];
@@ -56,9 +68,6 @@ export const getAvailableStations = (completedStations) => {
 
 // Helper: checks prerequisites and eligibility criteria against stored answers
 export const isStationAvailable = (station, completedStations) => {
-  if (station.id === 'registration_submit' && !hasCompletedFundingTrack(completedStations)) {
-    return false;
-  }
   // prerequisites
   const depsOk = (station.dependencies || []).every(dep => completedStations.includes(dep)) || (station.dependencies || []).length === 0;
   if (!depsOk) return false;
@@ -98,7 +107,7 @@ export const calculateProgress = (station) => {
       if (!sp.type) return sp.completed;
       const key = sp.key;
       const val = answers ? answers[key] : undefined;
-      if (sp.type === 'boolean') return val === true || val === 'true';
+      if (sp.type === 'boolean') return isBooleanAnswered(val);
       if (sp.type === 'number') return val !== undefined && val !== null && `${val}`.toString().trim() !== '';
       if (sp.type === 'file') return val && (val.name || val.filename || val.fileName);
       // default: treat non-empty string as completed

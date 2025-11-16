@@ -257,7 +257,7 @@ function DashboardRoadmap({ progressData, getStationWithProgress, resetSignal })
               <X className="w-5 h-5" />
             </button>
             <div className="space-y-4">
-              <h2 className="text-2xl font-bold text-gray-900">Welcome to your ESPI workflow</h2>
+              <h2 className="text-2xl font-bold text-gray-900">Welcome to your Business Asisstant Espoo workflow</h2>
               <p className="text-sm text-gray-600">
                 This roadmap walks you from basic company info through financial numbers,
                 funding tracks, insurance, and final submission. Complete the Company Info
@@ -321,7 +321,7 @@ function DashboardRoadmap({ progressData, getStationWithProgress, resetSignal })
                 disabled={answersTabLocked}
                 className={`w-full px-6 py-4 font-semibold transition-all flex items-center justify-center gap-2 border-b-4 ${getMenuTabClass(activeTab === 'answers', answersTabLocked)}`}
               >
-                <Sparkles className="w-5 h-5" />
+                <Target className="w-5 h-5" />
                 Answered Questions
               </button>
               {answersTabLocked && (
@@ -654,16 +654,27 @@ function DashboardRoadmap({ progressData, getStationWithProgress, resetSignal })
 
                               {/* Input controls based on type */}
                               {sp.type === 'boolean' ? (
-                                <div className="flex items-center gap-2">
-                                  <input
-                                    id={sp.id}
-                                    type="checkbox"
-                                    checked={!!val}
-                                    onChange={(e) => handleAnswerChange(sp.key, e.target.checked)}
-                                    className="w-4 h-4"
-                                    data-field-key={sp.key}
-                                  />
-                                  <label htmlFor={sp.id} className="text-sm text-gray-700">{val ? 'Yes' : 'No'}</label>
+                                <div className="flex gap-3">
+                                  {['yes', 'no'].map(option => {
+                                    const isYes = option === 'yes'
+                                    const isSelected = isYes ? (val === true || val === 'true') : (val === false || val === 'false')
+                                    return (
+                                      <button
+                                        key={option}
+                                        type="button"
+                                        className={`px-4 py-2 rounded-lg border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+                                          isSelected
+                                            ? 'bg-teal-600 text-white border-teal-600 focus:ring-teal-500'
+                                            : 'bg-white text-gray-700 border-gray-300 hover:border-gray-400'
+                                        }`}
+                                        onClick={() => handleAnswerChange(sp.key, isYes)}
+                                        data-field-key={isYes ? sp.key : undefined}
+                                        aria-pressed={isSelected}
+                                      >
+                                        {isYes ? 'Yes' : 'No'}
+                                      </button>
+                                    )
+                                  })}
                                 </div>
                               ) : sp.type === 'long_text' ? (
                                 <textarea

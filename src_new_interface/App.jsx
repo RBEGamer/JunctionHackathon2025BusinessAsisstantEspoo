@@ -28,6 +28,8 @@ const determineBasePath = () => {
 
 function App() {
   const basePath = determineBasePath()
+  const assetBasePath = basePath === '/' ? '' : basePath
+  const logoSrc = `${assetBasePath}/logo.svg`
   const [progressData, setProgressData] = useState(() => {
     const saved = localStorage.getItem('entrepreneur-progress');
     if (saved) {
@@ -95,8 +97,8 @@ function App() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between h-16">
               <div className="flex items-center space-x-8">
-                <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  Business Asisstant Espoo
+                <Link to="/" className="flex items-center" aria-label="Business Asisstant Espoo">
+                  <img src={logoSrc} alt="Business Asisstant Espoo" className="h-10 w-auto" />
                 </Link>
                 <div className="flex space-x-4">
                 

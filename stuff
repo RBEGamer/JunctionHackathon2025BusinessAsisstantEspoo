@@ -1,0 +1,2 @@
+    "generate:tracks": "node scripts/generate-tracks.js",
+    //"prebuild:new-interface": "npm run generate:tracks",

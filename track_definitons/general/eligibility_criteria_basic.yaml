@@ -131,6 +131,12 @@ options:
         type: boolean
         help_text: "Do you have any overdue payments or arrears on Business Finland or Tekes loans?"
 
+      - id: collects_personal_data
+        key: "compliance.collects_personal_data"
+        label: "Will you collect or process personal data from customers, employees, or users?"
+        type: boolean
+        help_text: "Includes storing customer contact details, analytics data with identifiers, employee information, or any other personal information."
+
       # Founder Details
       - id: residence_helsinki
         key: "founder.residence_helsinki"

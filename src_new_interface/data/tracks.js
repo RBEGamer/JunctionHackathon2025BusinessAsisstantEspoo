@@ -246,6 +246,13 @@ export default [
           "help_text": "Do you have any overdue payments or arrears on Business Finland or Tekes loans?"
         },
         {
+          "id": "collects_personal_data",
+          "key": "compliance.collects_personal_data",
+          "label": "Will you collect or process personal data from customers, employees, or users?",
+          "type": "boolean",
+          "help_text": "Includes storing customer contact details, analytics data with identifiers, employee information, or any other personal information."
+        },
+        {
           "id": "residence_helsinki",
           "key": "founder.residence_helsinki",
           "label": "Do you reside in Helsinki?",
@@ -482,6 +489,113 @@ export default [
           "id": "assets_to_insure",
           "key": "insurance.assets_to_insure",
           "label": "Significant assets to insure (premises, equipment, inventory, vehicles)",
+          "type": "long_text"
+        }
+      ]
+    }
+  },
+  {
+    "trackId": "gdpr_basic",
+    "file": "gdpr/gdpr_basic.yaml",
+    "order": 2,
+    "required": false,
+    "category": "legal",
+    "description": "Data Protection & GDPR – Basics for handling personal data",
+    "prerequisites": [
+      "business_plan_basic"
+    ],
+    "mutually_exclusive_with": [],
+    "is_terminal": false,
+    "definition": {
+      "id": "gdpr_basic",
+      "track": "legal",
+      "type": "data_protection",
+      "label": "Data Protection & GDPR – Basics",
+      "provider": "Office of the Data Protection Ombudsman / EU",
+      "url": "https://tietosuoja.fi/en/for-organisations",
+      "summary": "Collects the minimum information needed to understand whether the business processes personal data, what kinds of data and for what purposes, and whether basic GDPR obligations are covered: legal basis, retention, service providers, and a privacy notice.\n",
+      "links": [
+        {
+          "label": "Data Protection Ombudsman – For organisations",
+          "url": "https://tietosuoja.fi/en/for-organisations"
+        },
+        {
+          "label": "EU GDPR – Overview",
+          "url": "https://commission.europa.eu/law/law-topic/data-protection/eu-data-protection-rules_en"
+        },
+        {
+          "label": "EDPB – Guidelines and best practices",
+          "url": "https://edpb.europa.eu/our-work-tools/general-guidance/gdpr-guidelines-recommendations-best-practices_en"
+        }
+      ],
+      "eligibility": {
+        "criteria_refs": [
+          {
+            "id": "collects_personal_data",
+            "answer_key": "compliance.collects_personal_data",
+            "expected_value": true
+          }
+        ]
+      },
+      "required_inputs": [
+        {
+          "id": "processes_personal_data",
+          "key": "gdpr.processes_personal_data",
+          "label": "Will you store or process personal data of customers, employees or other individuals?",
+          "type": "boolean"
+        },
+        {
+          "id": "personal_data_categories",
+          "key": "gdpr.personal_data_categories",
+          "label": "What kinds of personal data will you handle? (e.g. names, emails, addresses, payment data, health data)",
+          "type": "long_text"
+        },
+        {
+          "id": "processing_purposes",
+          "key": "gdpr.processing_purposes",
+          "label": "For what purposes will you use personal data? (e.g. customer management, marketing, service delivery)",
+          "type": "long_text"
+        },
+        {
+          "id": "legal_basis",
+          "key": "gdpr.legal_basis",
+          "label": "What is your main legal basis for processing? (e.g. contract, consent, legal obligation, legitimate interest)",
+          "type": "long_text"
+        },
+        {
+          "id": "storage_and_location",
+          "key": "gdpr.storage_and_location",
+          "label": "Where and how will personal data be stored? (systems, cloud providers, countries)",
+          "type": "long_text"
+        },
+        {
+          "id": "retention_periods",
+          "key": "gdpr.retention_periods",
+          "label": "How long will you keep different categories of personal data?",
+          "type": "long_text"
+        },
+        {
+          "id": "processors_and_tools",
+          "key": "gdpr.processors_and_tools",
+          "label": "Which external services/tools will you use that process personal data? (e.g. CRM, email, payment provider)",
+          "type": "long_text"
+        },
+        {
+          "id": "privacy_notice_plan",
+          "key": "gdpr.privacy_notice_plan",
+          "label": "Do you have (or plan) a privacy notice explaining your data processing to users/customers?",
+          "type": "long_text"
+        },
+        {
+          "id": "high_risk_processing",
+          "key": "gdpr.high_risk_processing",
+          "label": "Will you process any high-risk data (e.g. health data, children’s data, profiling, large-scale monitoring)?",
+          "type": "long_text"
+        },
+        {
+          "id": "data_protection_contact",
+          "key": "gdpr.data_protection_contact",
+          "label": "Who is responsible for data protection in your company and how can they be contacted?",
           "type": "long_text"
         }
       ]

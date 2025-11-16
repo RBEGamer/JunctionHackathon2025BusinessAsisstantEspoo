@@ -55,6 +55,16 @@ routing:
       - business_plan_basic
     order: 2
 
+  # GDPR/Data Protection track - shown when collecting personal data
+  - track_id: gdpr_basic
+    file: gdpr/gdpr_basic.yaml
+    required: false
+    description: "Data Protection & GDPR – Basics for handling personal data"
+    category: legal
+    prerequisites:
+      - business_plan_basic
+    order: 2
+
   # Funding tracks - user can choose ONE after eligibility (mutually exclusive)
   # Each funding track requires both business_plan_basic and eligibility_criteria_basic
   - track_id: startup_foundation_individual_grant
@@ -124,4 +134,3 @@ routing:
 #   - helsinki_startup_grant
 #   ↓
 # registration_submit (order: 4, terminal) [requires: business_plan_basic, enterprise_form_basic, numbers_basic]
-

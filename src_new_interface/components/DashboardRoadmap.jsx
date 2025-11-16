@@ -142,18 +142,28 @@ function DashboardRoadmap({ progressData, getStationWithProgress, resetSignal })
   const availableStations = getAvailableStations(completedStations);
   const overallProgress = getOverallProgress(timelineStations);
   const canSchedule = canScheduleAppointment(completedStations);
-  const nextPossibleTracks = [...fundingTracks]
-    .map(track => ({
-      track,
-      isAvailable: isStationAvailable(track, completedStations),
-      progress: calculateProgress(track),
-    }))
-    .sort((a, b) => {
-      if (a.isAvailable === b.isAvailable) {
-        return b.progress - a.progress;
+  const nextPossibleTracks = (() => {
+    const specialCategories = new Set(['funding', 'legal']);
+    const candidates = stationsWithProgress.filter(station => specialCategories.has(station.category));
+    const uniqueById = new Map();
+    candidates.forEach(station => {
+      if (!uniqueById.has(station.id)) {
+        uniqueById.set(station.id, station);
       }
-      return a.isAvailable ? -1 : 1;
     });
+    return Array.from(uniqueById.values())
+      .map(track => ({
+        track,
+        isAvailable: isStationAvailable(track, completedStations),
+        progress: calculateProgress(track),
+      }))
+      .sort((a, b) => {
+        if (a.isAvailable === b.isAvailable) {
+          return b.progress - a.progress;
+        }
+        return a.isAvailable ? -1 : 1;
+      });
+  })();
   const roadmapTabLocked = isTabLocked('roadmap');
   const answersTabLocked = isTabLocked('answers');
   const appointmentTabDisabled = isTabLocked('appointment') || !canSchedule;

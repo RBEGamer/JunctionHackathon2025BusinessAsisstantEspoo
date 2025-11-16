@@ -1,4 +1,5 @@
-# ESPI Funding Application Assistant
+# BusinessAsisstantEspoo
+Your Buddy to start you dream business with Business Espoo
 
 ## Team
 

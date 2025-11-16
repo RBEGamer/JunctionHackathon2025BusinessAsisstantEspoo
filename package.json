@@ -6,6 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
+    "compile:tracks": "node scripts/compile-tracks.cjs",
+    "prebuild:new-interface": "npm run compile:tracks",
     "build:new-interface": "esbuild src_new_interface/main.jsx --bundle --outfile=public/bundle.js --minify --sourcemap --loader:.jsx=jsx --format=esm --jsx=automatic"
   },
   "keywords": [

@@ -14,10 +14,8 @@ const readStoredTrackAnswers = () => {
 };
 
 function DashboardRoadmap({ progressData, getStationWithProgress, resetSignal }) {
-  const [activeTab, setActiveTab] = useState('roadmap')
-  const [showWelcomeModal, setShowWelcomeModal] = useState(() => {
-    return localStorage.getItem('espi-welcome-shown') !== 'true';
-  });
+  const [activeTab, setActiveTab] = useState('info')
+  const [showWelcomeModal, setShowWelcomeModal] = useState(false);
   const [userName, setUserName] = useState(() => {
     return localStorage.getItem('user-name') || '';
   });
@@ -48,9 +46,12 @@ function DashboardRoadmap({ progressData, getStationWithProgress, resetSignal })
     typeof value === 'string' ? value.trim().length > 0 : !!value
   );
   const areOtherTabsLocked = !hasCompanyInfoFilled;
-  const isTabLocked = (tabId) => areOtherTabsLocked && tabId !== 'company';
+  const isTabLocked = (tabId) => {
+    if (tabId === 'company' || tabId === 'info') return false;
+    return areOtherTabsLocked;
+  };
   useEffect(() => {
-    if (!hasCompanyInfoFilled && activeTab !== 'company') {
+    if (!hasCompanyInfoFilled && activeTab !== 'company' && activeTab !== 'info') {
       setActiveTab('company');
     }
   }, [hasCompanyInfoFilled, activeTab]);
@@ -283,6 +284,15 @@ function DashboardRoadmap({ progressData, getStationWithProgress, resetSignal })
         {/* Tab Navigation */}
         <div className="mb-8 bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
           <div className="flex flex-wrap items-center">
+            {/* Info Tab */}
+            <button
+              onClick={() => setActiveTab('info')}
+              className={`flex-1 px-6 py-4 font-semibold transition-all flex items-center justify-center gap-2 border-b-4 ${getMenuTabClass(activeTab === 'info', false)}`}
+            >
+              <Sparkles className="w-5 h-5" />
+              Info & Guide
+            </button>
+
             {/* Company Info Tab */}
             <button
               onClick={() => setActiveTab('company')}
@@ -347,7 +357,49 @@ function DashboardRoadmap({ progressData, getStationWithProgress, resetSignal })
         </div>
 
         {/* Tab Content */}
-        {activeTab === 'company' ? (
+        {activeTab === 'info' ? (
+          <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-6 mb-8">
+            <div className="flex items-start gap-3 mb-6">
+              <Sparkles className="w-6 h-6 text-teal-600" />
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900">Welcome to Business Asisstant Espoo</h3>
+                <p className="text-gray-600 mt-1">This short guide explains how to move from collecting company info to unlocking funding tracks and, finally, scheduling time with an advisor.</p>
+              </div>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2">
+              <div className="bg-teal-50 border border-teal-100 rounded-xl p-4">
+                <h4 className="font-semibold text-teal-800 mb-2">1. Start with Company Info</h4>
+                <p className="text-sm text-teal-900">Fill in the Company Info tab so we can personalise the roadmap and unlock the rest of the experience. Everything is saved locally in your browser.</p>
+                <ul className="mt-3 text-sm text-teal-900 space-y-1 list-disc pl-4">
+                  <li>Company name &amp; industry</li>
+                  <li>Contact email</li>
+                  <li>Your idea description</li>
+                </ul>
+              </div>
+              <div className="bg-blue-50 border border-blue-100 rounded-xl p-4">
+                <h4 className="font-semibold text-blue-800 mb-2">2. Work through the roadmap</h4>
+                <p className="text-sm text-blue-900">Tracks unlock once their prerequisites are completed. Each track contains clear questions and progress indicators.</p>
+                <ul className="mt-3 text-sm text-blue-900 space-y-1 list-disc pl-4">
+                  <li>Answer prompts (including Yes / No checkpoints)</li>
+                  <li>Upload documents when asked</li>
+                  <li>Mark sub-steps complete to reach 100%</li>
+                </ul>
+              </div>
+              <div className="bg-purple-50 border border-purple-100 rounded-xl p-4">
+                <h4 className="font-semibold text-purple-800 mb-2">3. Review your answers</h4>
+                <p className="text-sm text-purple-900">Use the “Answered Questions” tab to see everything you have entered organised by track. Download or print it for offline reviews.</p>
+              </div>
+              <div className="bg-amber-50 border border-amber-100 rounded-xl p-4">
+                <h4 className="font-semibold text-amber-800 mb-2">4. Book help when ready</h4>
+                <p className="text-sm text-amber-900">Once the required tracks ({REQUIRED_STATIONS_FOR_APPOINTMENT.join(', ')}) are complete, the appointment tab unlocks so you can request time with an advisor.</p>
+              </div>
+            </div>
+            <div className="mt-6 bg-gray-50 border border-gray-200 rounded-xl p-4">
+              <h4 className="font-semibold text-gray-800 mb-1">Need a refresher later?</h4>
+              <p className="text-sm text-gray-600">You can always return to this Info tab. Progress is stored locally, so reloading the page keeps your data safe.</p>
+            </div>
+          </div>
+        ) : activeTab === 'company' ? (
           <div className="bg-gradient-to-br from-teal-50 to-cyan-50 rounded-lg p-6 border-2 border-teal-200 mb-8">
             {!isEditingCompany ? (
               <div className="flex items-start justify-between">
@@ -639,8 +691,9 @@ function DashboardRoadmap({ progressData, getStationWithProgress, resetSignal })
                       <div className="space-y-3">
                         {stationPaginated.map(sp => {
                           const val = sp.key ? trackAnswers[sp.key] : undefined;
+                          const isBooleanAnswered = val === true || val === false || val === 'true' || val === 'false'
                           const isDone = sp.type ? (
-                            sp.type === 'boolean' ? (val === true || val === 'true') :
+                            sp.type === 'boolean' ? isBooleanAnswered :
                             sp.type === 'file' ? (val && (val.name || val.filename || val.fileName)) :
                             val !== undefined && val !== null && `${val}`.toString().trim() !== ''
                           ) : sp.completed;
@@ -754,8 +807,9 @@ function DashboardRoadmap({ progressData, getStationWithProgress, resetSignal })
                             } else {
                               const firstIncompleteField = station.subpoints.find(sp => {
                                 const val = sp.key ? trackAnswers[sp.key] : undefined;
+                                const isBooleanAnswered = val === true || val === false || val === 'true' || val === 'false'
                                 const isDone = sp.type ? (
-                                  sp.type === 'boolean' ? (val === true || val === 'true') :
+                                  sp.type === 'boolean' ? isBooleanAnswered :
                                   sp.type === 'file' ? (val && (val.name || val.filename || val.fileName)) :
                                   val !== undefined && val !== null && `${val}`.toString().trim() !== ''
                                 ) : sp.completed;

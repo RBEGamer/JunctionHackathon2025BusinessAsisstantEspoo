@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { CheckCircle2, Circle, ArrowRight, Calendar, Target, Sparkles, Building2, Lightbulb, Edit2, Save, X, Lock } from 'lucide-react'
+import { CheckCircle2, Circle, ArrowRight, Calendar, Target, Sparkles, Building2, Lightbulb, Edit2, Save, X, Lock, ClipboardList } from 'lucide-react'
 import { stations, calculateProgress, getOverallProgress, getAvailableStations, canScheduleAppointment, REQUIRED_STATIONS_FOR_APPOINTMENT, isStationAvailable, hasCompletedFundingTrack } from '../data/stations'
 import AppointmentScheduling from './AppointmentScheduling'
 import AnsweredSummary from './AnsweredSummary'
@@ -331,7 +331,7 @@ function DashboardRoadmap({ progressData, getStationWithProgress, resetSignal })
                 disabled={answersTabLocked}
                 className={`w-full flex-1 px-6 py-4 font-semibold transition-all flex items-center justify-center gap-2 border-b-4 ${getMenuTabClass(activeTab === 'answers', answersTabLocked)}`}
               >
-                <Target className="w-5 h-5" />
+                <ClipboardList className="w-5 h-5" />
                 Submission
               </button>
               {answersTabLocked && (

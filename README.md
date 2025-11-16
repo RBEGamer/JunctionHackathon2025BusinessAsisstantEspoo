@@ -1,8 +1,19 @@
 # ESPI Funding Application Assistant
 
+## Team
 
-DEMO: https://rbegamer.github.io/JunctionHackathon2025BusinessAsisstantEspoo/
+## Challenge
 
+
+
+
+
+
+## DEMO
+
+https://rbegamer.github.io/JunctionHackathon2025BusinessAsisstantEspoo/
+
+## IDEA
 
 A web-based application assistant that helps users complete funding applications step by step, with progress tracking and intelligent routing between tracks. The application provides a guided experience for startups and entrepreneurs to navigate through various funding opportunities in Finland, including Business Finland grants, Helsinki Startup Grants, and Startup Foundation grants.
 

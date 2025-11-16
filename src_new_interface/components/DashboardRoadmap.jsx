@@ -404,9 +404,16 @@ function DashboardRoadmap({ progressData, getStationWithProgress, resetSignal })
             {!isEditingCompany ? (
               <div className="flex items-start justify-between">
                 <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-4">
-                    <Building2 className="w-5 h-5 text-teal-600" />
-                    <h3 className="font-bold text-gray-800 text-lg">Company Information</h3>
+                  <div className="mb-4">
+                    <div className="flex items-center gap-2 mb-1">
+                      <Building2 className="w-5 h-5 text-teal-600" />
+                      <h3 className="font-bold text-gray-800 text-lg">Company Information</h3>
+                    </div>
+                    <p className="text-sm text-gray-600">
+                      These details unlock the rest of the roadmap, personalise the next steps,
+                      and pre-fill funding forms later on. We keep the information locally in your
+                      browser so you can edit and revisit anytime.
+                    </p>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
                     {companyData.companyName && (

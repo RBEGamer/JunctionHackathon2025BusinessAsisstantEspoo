@@ -310,10 +310,10 @@ function DashboardRoadmap({ progressData, getStationWithProgress, resetSignal })
                   setActiveTab('roadmap');
                 }}
                 disabled={roadmapTabLocked}
-                className={`w-full px-6 py-4 font-semibold transition-all flex items-center justify-center gap-2 border-b-4 ${getMenuTabClass(activeTab === 'roadmap', roadmapTabLocked)}`}
+                className={`w-full flex-1 px-6 py-4 font-semibold transition-all flex items-center justify-center gap-2 border-b-4 ${getMenuTabClass(activeTab === 'roadmap', roadmapTabLocked)}`}
               >
                 <Target className="w-5 h-5" />
-                Your Roadmap
+                Roadmap
               </button>
               {roadmapTabLocked && (
                 <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-full mt-1 rounded-md bg-black/85 text-white text-xs px-2 py-1 opacity-0 group-hover:opacity-100 transition">
@@ -329,10 +329,10 @@ function DashboardRoadmap({ progressData, getStationWithProgress, resetSignal })
                   setActiveTab('answers');
                 }}
                 disabled={answersTabLocked}
-                className={`w-full px-6 py-4 font-semibold transition-all flex items-center justify-center gap-2 border-b-4 ${getMenuTabClass(activeTab === 'answers', answersTabLocked)}`}
+                className={`w-full flex-1 px-6 py-4 font-semibold transition-all flex items-center justify-center gap-2 border-b-4 ${getMenuTabClass(activeTab === 'answers', answersTabLocked)}`}
               >
                 <Target className="w-5 h-5" />
-                Answered Questions
+                Submission
               </button>
               {answersTabLocked && (
                 <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-full mt-1 rounded-md bg-black/85 text-white text-xs px-2 py-1 opacity-0 group-hover:opacity-100 transition">

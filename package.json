@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "build:new-interface": "esbuild src_new_interface/main.jsx --bundle --outfile=public/new-interface/bundle.js --minify --sourcemap --loader:.jsx=jsx --format=esm --jsx=automatic"
+    "build:new-interface": "esbuild src_new_interface/main.jsx --bundle --outfile=public/bundle.js --minify --sourcemap --loader:.jsx=jsx --format=esm --jsx=automatic"
   },
   "keywords": [
     "funding",

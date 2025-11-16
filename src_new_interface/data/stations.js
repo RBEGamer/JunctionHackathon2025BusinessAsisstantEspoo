@@ -18,11 +18,13 @@ export const stations = tracks.map(t => {
   })) : [{ id: `${t.trackId}-1`, label: def.label || t.trackId, completed: false }];
 
   const summary = def.summary || t.summary || '';
+  const links = Array.isArray(def.links) ? def.links : [];
   return {
     id: t.trackId,
     title: def.label || t.trackId,
     description: t.description || summary,
     summary,
+    links,
     category: t.category || def.track || null,
     order: t.order || 0,
     subpoints,

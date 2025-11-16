@@ -669,6 +669,22 @@ function DashboardRoadmap({ progressData, getStationWithProgress, resetSignal })
                       <div>
                         <h3 className={`text-2xl font-bold ${isCompleted ? 'text-green-700' : isAvailable ? 'text-teal-700' : 'text-gray-600'}`}>{station.title}</h3>
                         <p className={`text-sm mt-1 ${isAvailable ? 'text-gray-600' : 'text-gray-500'}`}>{station.summary || station.description}</p>
+                        {Array.isArray(station.links) && station.links.length > 0 && (
+                          <ul className="mt-2 space-y-1">
+                            {station.links.map(link => (
+                              <li key={`${station.id}-${link.url}`}>
+                                <a
+                                  href={link.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-xs text-[#0050bb] hover:underline flex items-center gap-1"
+                                >
+                                  <span>{link.label || link.url}</span>
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
                       </div>
                       <div className="text-right">
                         <div className="text-sm text-gray-500">Progress</div>

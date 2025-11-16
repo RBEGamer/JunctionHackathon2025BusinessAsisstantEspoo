@@ -36,6 +36,58 @@ function DashboardRoadmap({ progressData, getStationWithProgress, resetSignal })
 
   const [trackAnswers, setTrackAnswers] = useState(readStoredTrackAnswers);
 
+  const humanizeIdentifier = (value = '') => {
+    if (!value) return '';
+    return value
+      .replace(/[_-]+/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .replace(/\b\w/g, (char) => char.toUpperCase());
+  };
+
+  const getStationTitleById = (stationId) => {
+    const station = stations.find(s => s.id === stationId);
+    if (!station) return humanizeIdentifier(stationId);
+    return station.title || station.label || humanizeIdentifier(stationId);
+  };
+
+  const toYesNo = (value) => {
+    if (value === true) return 'Yes';
+    if (value === false) return 'No';
+    if (typeof value === 'string') {
+      const normalized = value.trim().toLowerCase();
+      if (['true', 'yes', 'y', '1'].includes(normalized)) return 'Yes';
+      if (['false', 'no', 'n', '0'].includes(normalized)) return 'No';
+    }
+    if (typeof value === 'number') {
+      if (value === 1) return 'Yes';
+      if (value === 0) return 'No';
+    }
+    return null;
+  };
+
+  const describeExpectedValue = (value) => {
+    const yesNo = toYesNo(value);
+    if (yesNo) return yesNo;
+    if (value === null || value === undefined) return 'No specific value';
+    return `${value}`;
+  };
+
+  const describeActualValue = (value) => {
+    const yesNo = toYesNo(value);
+    if (yesNo) return yesNo;
+    if (value === null || value === undefined || value === '') return 'Not answered yet';
+    return `${value}`;
+  };
+
+  const matchesExpectedValue = (actual, expected) => {
+    if (typeof expected === 'boolean') return actual === expected || `${actual}` === `${expected}`;
+    if (typeof expected === 'number') return Number(actual) === expected;
+    if (expected === null || expected === undefined) return actual === expected;
+    if (actual === null || actual === undefined) return false;
+    return `${actual}`.toLowerCase() === `${expected}`.toLowerCase();
+  };
+
   const companyInfoValues = [
     companyData.companyName,
     companyData.industry,
@@ -105,6 +157,32 @@ function DashboardRoadmap({ progressData, getStationWithProgress, resetSignal })
   const roadmapTabLocked = isTabLocked('roadmap');
   const answersTabLocked = isTabLocked('answers');
   const appointmentTabDisabled = isTabLocked('appointment') || !canSchedule;
+
+  const getTrackRequirementDetails = (track) => {
+    const dependencyDetails = (track.dependencies || []).map(dep => ({
+      id: dep,
+      label: getStationTitleById(dep),
+      met: completedStations.includes(dep),
+    }));
+
+    const eligibilityDetails = Array.isArray(track.eligibility)
+      ? track.eligibility.map((criterion, idx) => {
+          const key = criterion.answer_key || criterion.answerKey || criterion.key;
+          const id = criterion.id || key || `criterion-${track.id}-${idx}`;
+          const expected = criterion.expected_value;
+          const actualValue = key ? trackAnswers[key] : undefined;
+          return {
+            id,
+            label: humanizeIdentifier(criterion.label || criterion.id || key || `Eligibility ${idx + 1}`),
+            expected: describeExpectedValue(expected),
+            actual: key ? describeActualValue(actualValue) : 'Not tracked',
+            met: key ? matchesExpectedValue(actualValue, expected) : false,
+          };
+        })
+      : [];
+
+    return { dependencyDetails, eligibilityDetails };
+  };
 
   const renderStationButton = (station) => {
     const progress = calculateProgress(station);
@@ -632,27 +710,80 @@ function DashboardRoadmap({ progressData, getStationWithProgress, resetSignal })
                   <h3 className="text-base font-semibold text-gray-800">Next possible tracks</h3>
                   <div className="grid grid-cols-1 gap-2">
                     {nextPossibleTracks.map(({ track, isAvailable, progress }) => {
+                      const { dependencyDetails, eligibilityDetails } = getTrackRequirementDetails(track);
+                      const hasRequirements = dependencyDetails.length > 0 || eligibilityDetails.length > 0;
+                      const allRequirementsMet = dependencyDetails.every(d => d.met) && eligibilityDetails.every(e => e.met);
+
                       return (
-                        <button
-                          key={track.id}
-                          onClick={() => {
-                            if (!isAvailable) return;
-                            setSelectedStationId(track.id);
-                          }}
-                          disabled={!isAvailable}
-                          className={`text-left p-3 border rounded-lg transition-all flex flex-col gap-1 ${
-                            isAvailable
-                              ? 'border-[#0050bb] text-[#1d2b31] hover:border-[#33d5e4]'
-                              : 'border-gray-200 text-gray-400 cursor-not-allowed opacity-70'
-                          }`}
-                        >
-                          <span className="text-sm font-semibold">{track.title}</span>
-                          <p className="text-[11px] text-gray-500">{track.description}</p>
-                          <div className="flex items-center justify-between text-xs text-gray-600">
-                            <span className="percent-pill">{progress}%</span>
-                            <span className="uppercase tracking-wide">{isAvailable ? 'Unlocked' : 'Locked'}</span>
+                        <div key={track.id} className="relative group">
+                          <button
+                            onClick={() => {
+                              if (!isAvailable) return;
+                              setSelectedStationId(track.id);
+                            }}
+                            disabled={!isAvailable}
+                            className={`text-left p-3 border rounded-lg transition-all flex flex-col gap-1 ${
+                              isAvailable
+                                ? 'border-[#0050bb] text-[#1d2b31] hover:border-[#33d5e4]'
+                                : 'border-gray-200 text-gray-400 cursor-not-allowed opacity-70'
+                            }`}
+                          >
+                            <span className="text-sm font-semibold">{track.title}</span>
+                            <p className="text-[11px] text-gray-500">{track.description}</p>
+                            <div className="flex items-center justify-between text-xs text-gray-600">
+                              <span className="percent-pill">{progress}%</span>
+                              <span className="uppercase tracking-wide">{isAvailable ? 'Unlocked' : 'Locked'}</span>
+                            </div>
+                          </button>
+                          <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-full mt-2 w-72 rounded-xl border border-slate-700 bg-slate-900/95 text-white shadow-2xl px-4 py-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10">
+                            <p className="text-[11px] uppercase tracking-wide text-slate-300">Unlock requirements</p>
+                            {hasRequirements ? (
+                              <>
+                                {dependencyDetails.length > 0 && (
+                                  <div className="mt-2">
+                                    <p className="text-[11px] text-slate-400">Prerequisites</p>
+                                    <ul className="mt-1 space-y-1">
+                                      {dependencyDetails.map(dep => (
+                                        <li key={dep.id} className="flex items-start gap-2 text-xs">
+                                          <span className={`mt-1 h-2 w-2 rounded-full ${dep.met ? 'bg-emerald-400' : 'bg-amber-400'}`} />
+                                          <span className="flex-1">{dep.label}</span>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                )}
+                                {eligibilityDetails.length > 0 && (
+                                  <div className="mt-3">
+                                    <p className="text-[11px] text-slate-400">Eligibility answers</p>
+                                    <ul className="mt-1 space-y-1">
+                                      {eligibilityDetails.map(crit => (
+                                        <li key={crit.id} className="text-[11px] leading-snug">
+                                          <div className="flex items-start gap-2">
+                                            <span className={`mt-1 h-2 w-2 rounded-full ${crit.met ? 'bg-emerald-400' : 'bg-amber-400'}`} />
+                                            <div>
+                                              <div className="text-xs font-medium text-white">{crit.label}</div>
+                                              <div className="text-[10px] text-slate-300">
+                                                Need: <span className="text-white">{crit.expected}</span>
+                                                <span className={`ml-2 ${crit.met ? 'text-emerald-300' : 'text-amber-200'}`}>
+                                                  {crit.met ? 'Met' : `Current: ${crit.actual}`}
+                                                </span>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                )}
+                                {allRequirementsMet && (
+                                  <div className="mt-2 text-[11px] text-emerald-300">All requirements satisfied.</div>
+                                )}
+                              </>
+                            ) : (
+                              <p className="text-xs text-white mt-1">No special requirements — start whenever you're ready.</p>
+                            )}
                           </div>
-                        </button>
+                        </div>
                       )
                     })}
                   </div>

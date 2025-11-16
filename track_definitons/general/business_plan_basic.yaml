@@ -13,14 +13,19 @@ options:
       customer needs, competitor analysis, operational logistics, marketing
       channels, insurance and risk considerations, and a plan for bookkeeping
       and financial monitoring. This track builds on the initial business idea
-      to create a concise but functional plan.
-      Links:
-      - Business plan document (add or upload the finalized plan that captures the sections collected here)
-      - UN Association of Finland – Sustainable Development (https://www.ykliitto.fi/en)
-      - Ministry of the Environment – Environmental Information (https://www.ymparisto.fi/en-us)
-      - Rinki – Producer Responsibility for Packaging (https://www.rinkiin.fi/en)
-      - Kierratys.info – Recycling Info (https://www.kierratys.info)
-      - Circular Design Finland (https://www.circulardesignsuomi.fi/en)
+      to create a concise but functional plan. Remember to add or upload the
+      finalized business plan document that captures the sections collected here.
+    links:
+      - label: "UN Association of Finland – Sustainable Development"
+        url: "https://www.ykliitto.fi/en"
+      - label: "Ministry of the Environment – Environmental Information"
+        url: "https://www.ymparisto.fi/en-us"
+      - label: "Rinki – Producer Responsibility for Packaging"
+        url: "https://www.rinkiin.fi/en"
+      - label: "Kierratys.info – Recycling Info"
+        url: "https://www.kierratys.info"
+      - label: "Circular Design Finland"
+        url: "https://www.circulardesignsuomi.fi/en"
 
     # What the chatbot/flow must collect at minimum for THIS track.
     required_inputs:

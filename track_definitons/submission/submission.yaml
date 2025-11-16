@@ -11,8 +11,9 @@ options:
       Final junction in the track. Confirms that basic idea, business plan,
       numbers & calculations, and form of enterprise are complete, and guides
       the user to submit the official company registration via Suomi.fi/YTJ.
-      Links:
-      - Yritysjuristi – Legal Services (https://www.yritysjuristi.fi)
+    links:
+      - label: "Yritysjuristi – Legal Services"
+        url: "https://www.yritysjuristi.fi"
 
     stage: "submit_registration"
     is_terminal: true

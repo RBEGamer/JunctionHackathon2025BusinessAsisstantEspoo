@@ -11,8 +11,11 @@ options:
       Collects essential eligibility criteria information needed to determine
       qualification for various funding programs and grants. This includes company
       registration status, founder details, scalability indicators, financial
-      metrics, and compliance requirements. 
-      Occupational Safety & Health Administration (https://www.tyosuojelu.fi/en)
+      metrics, and compliance requirements. Guidance for compliance is available
+      through the resources listed below.
+    links:
+      - label: "Occupational Safety & Health Administration"
+        url: "https://www.tyosuojelu.fi/en"
 
     # What the chatbot/flow must collect at minimum for THIS track.
     # These answers are used by funding tracks to check eligibility criteria.

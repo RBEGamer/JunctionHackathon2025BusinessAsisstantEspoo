@@ -17,7 +17,29 @@ export default [
       "label": "Business Plan Basic Information",
       "provider": "InfoFinland / Finnish Enterprise Agencies",
       "url": "https://www.infofinland.fi/en/work-and-enterprise/starting-a-business-in-finland",
-      "summary": "Collects the essential components of a Finnish business plan, including founder strengths and weaknesses, detailed product or service description, customer needs, competitor analysis, operational logistics, marketing channels, insurance and risk considerations, and a plan for bookkeeping and financial monitoring. This track builds on the initial business idea to create a concise but functional plan. Links: - Business plan document (add or upload the finalized plan that captures the sections collected here) - UN Association of Finland – Sustainable Development (https://www.ykliitto.fi/en) - Ministry of the Environment – Environmental Information (https://www.ymparisto.fi/en-us) - Rinki – Producer Responsibility for Packaging (https://www.rinkiin.fi/en) - Kierratys.info – Recycling Info (https://www.kierratys.info) - Circular Design Finland (https://www.circulardesignsuomi.fi/en)\n",
+      "summary": "Collects the essential components of a Finnish business plan, including founder strengths and weaknesses, detailed product or service description, customer needs, competitor analysis, operational logistics, marketing channels, insurance and risk considerations, and a plan for bookkeeping and financial monitoring. This track builds on the initial business idea to create a concise but functional plan. Remember to add or upload the finalized business plan document that captures the sections collected here.\n",
+      "links": [
+        {
+          "label": "UN Association of Finland – Sustainable Development",
+          "url": "https://www.ykliitto.fi/en"
+        },
+        {
+          "label": "Ministry of the Environment – Environmental Information",
+          "url": "https://www.ymparisto.fi/en-us"
+        },
+        {
+          "label": "Rinki – Producer Responsibility for Packaging",
+          "url": "https://www.rinkiin.fi/en"
+        },
+        {
+          "label": "Kierratys.info – Recycling Info",
+          "url": "https://www.kierratys.info"
+        },
+        {
+          "label": "Circular Design Finland",
+          "url": "https://www.circulardesignsuomi.fi/en"
+        }
+      ],
       "required_inputs": [
         {
           "id": "founder_strengths_weaknesses",
@@ -89,7 +111,13 @@ export default [
       "label": "Eligibility Criteria Basic Information",
       "provider": "ESPI System",
       "url": "",
-      "summary": "Collects essential eligibility criteria information needed to determine qualification for various funding programs and grants. This includes company registration status, founder details, scalability indicators, financial metrics, and compliance requirements.  Occupational Safety & Health Administration (https://www.tyosuojelu.fi/en)\n",
+      "summary": "Collects essential eligibility criteria information needed to determine qualification for various funding programs and grants. This includes company registration status, founder details, scalability indicators, financial metrics, and compliance requirements. Guidance for compliance is available through the resources listed below.\n",
+      "links": [
+        {
+          "label": "Occupational Safety & Health Administration",
+          "url": "https://www.tyosuojelu.fi/en"
+        }
+      ],
       "required_inputs": [
         {
           "id": "company_registered",
@@ -260,7 +288,13 @@ export default [
       "label": "Form of Enterprise – Basic Choice",
       "provider": "InfoFinland / Finnish Enterprise Agencies",
       "url": "https://www.infofinland.fi/en/work-and-enterprise/starting-a-business-in-finland",
-      "summary": "Helps the founder choose a suitable Finnish form of enterprise (e.g. private trader, limited company, co-operative, partnership) based on number of founders, risk tolerance, expected turnover and willingness to handle administrative obligations. Links: - PRH – Finnish Patent and Registration Office (https://www.prh.fi/en)\n",
+      "summary": "Helps the founder choose a suitable Finnish form of enterprise (e.g. private trader, limited company, co-operative, partnership) based on number of founders, risk tolerance, expected turnover and willingness to handle administrative obligations.\n",
+      "links": [
+        {
+          "label": "PRH – Finnish Patent and Registration Office",
+          "url": "https://www.prh.fi/en"
+        }
+      ],
       "required_inputs": [
         {
           "id": "number_of_founders",
@@ -320,7 +354,17 @@ export default [
       "label": "Numbers & Calculations – Basic Financials",
       "provider": "InfoFinland / Finnish Enterprise Agencies",
       "url": "https://www.infofinland.fi/en/work-and-enterprise/starting-a-business-in-finland",
-      "summary": "Collects the essential financial basics for a Finnish business plan: initial investments, monthly fixed and variable costs, pricing, and expected sales volumes. These inputs are used to estimate profitability, cash needs, and whether the business can realistically support the founder. Links: - Vero – MyTax service (https://www.vero.fi/en/e-file/mytax) - Statistics Finland – Official Statistics (https://www.stat.fi/index_en)\n",
+      "summary": "Collects the essential financial basics for a Finnish business plan: initial investments, monthly fixed and variable costs, pricing, and expected sales volumes. These inputs are used to estimate profitability, cash needs, and whether the business can realistically support the founder.\n",
+      "links": [
+        {
+          "label": "Vero – MyTax service",
+          "url": "https://www.vero.fi/en/e-file/mytax"
+        },
+        {
+          "label": "Statistics Finland – Official Statistics",
+          "url": "https://www.stat.fi/index_en"
+        }
+      ],
       "required_inputs": [
         {
           "id": "investment_list",
@@ -380,7 +424,29 @@ export default [
       "label": "Insurance & Social Security – Basics",
       "provider": "InfoFinland / Finnish Enterprise Agencies",
       "url": "https://www.infofinland.fi/en/work-and-enterprise/starting-a-business-in-finland/obligations-of-the-entrepreneur",
-      "summary": "Collects the minimum information needed to decide on statutory YEL pension insurance for the entrepreneur, mandatory insurances for employees, and key voluntary business insurances based on the planned operations and risks. Links: - Varma – YEL income calculator (https://www.varma.fi/en) - Yrittäjäkassa – Entrepreneur Unemployment Fund (https://www.yrittajakassa.fi) - Tukes – Finnish Safety and Chemicals Agency (https://tukes.fi/en) - Tukes – Surveillance (Who monitors what?) (https://tukes.fi/en/dothis) - I Know My Products – Safety training (https://www.tunnentuotteeni.fi)\n",
+      "summary": "Collects the minimum information needed to decide on statutory YEL pension insurance for the entrepreneur, mandatory insurances for employees, and key voluntary business insurances based on the planned operations and risks.\n",
+      "links": [
+        {
+          "label": "Varma – YEL income calculator",
+          "url": "https://www.varma.fi/en"
+        },
+        {
+          "label": "Yrittäjäkassa – Entrepreneur Unemployment Fund",
+          "url": "https://www.yrittajakassa.fi"
+        },
+        {
+          "label": "Tukes – Finnish Safety and Chemicals Agency",
+          "url": "https://tukes.fi/en"
+        },
+        {
+          "label": "Tukes – Surveillance (Who monitors what?)",
+          "url": "https://tukes.fi/en/dothis"
+        },
+        {
+          "label": "I Know My Products – Safety training",
+          "url": "https://www.tunnentuotteeni.fi"
+        }
+      ],
       "required_inputs": [
         {
           "id": "self_employment_scope",
@@ -444,7 +510,29 @@ export default [
       "label": "Startup Foundation Individual Grants",
       "provider": "Startup Foundation",
       "url": "https://www.startup-saatio.fi/individual-grants",
-      "summary": "€6,000 over 3 months for individuals who are pre-company and want to focus full-time on developing and validating a scalable startup idea. Links: - Business Finland – Funding for Companies (https://www.businessfinland.fi/en) - Finnvera – Loans & Guarantees for Entrepreneurs (https://www.finnvera.fi/eng) - Start-up Grant (Info via TE Services) (https://www.te-palvelut.fi/en) - Finnish Business Mentors (Yrityskummit) (https://www.yrityskummit.fi) - Uusyrityskeskus – Finnish Enterprise Agencies (https://www.uusyrityskeskus.fi/in-english)\n",
+      "summary": "€6,000 over 3 months for individuals who are pre-company and want to focus full-time on developing and validating a scalable startup idea.\n",
+      "links": [
+        {
+          "label": "Business Finland – Funding for Companies",
+          "url": "https://www.businessfinland.fi/en"
+        },
+        {
+          "label": "Finnvera – Loans & Guarantees for Entrepreneurs",
+          "url": "https://www.finnvera.fi/eng"
+        },
+        {
+          "label": "Start-up Grant (Info via TE Services)",
+          "url": "https://www.te-palvelut.fi/en"
+        },
+        {
+          "label": "Finnish Business Mentors (Yrityskummit)",
+          "url": "https://www.yrityskummit.fi"
+        },
+        {
+          "label": "Uusyrityskeskus – Finnish Enterprise Agencies",
+          "url": "https://www.uusyrityskeskus.fi/in-english"
+        }
+      ],
       "stage": "pre-company",
       "country": "FI",
       "eligibility": {
@@ -546,7 +634,29 @@ export default [
       "label": "Business Finland – Young Innovative Company (YIC) Funding",
       "provider": "Business Finland",
       "url": "https://www.businessfinland.fi/en/services/funding/funding-services/Young-innovative-companies/",
-      "summary": "Up to €1,000,000 in three grant phases (250k + 250k + 500k) for young, high-growth Finnish startups (under 5 years old) with strong international traction, turnover and equity investments. Links: - Business Finland – Funding for Companies (https://www.businessfinland.fi/en) - Finnvera – Loans & Guarantees for Entrepreneurs (https://www.finnvera.fi/eng) - Start-up Grant (Info via TE Services) (https://www.te-palvelut.fi/en) - Finnish Business Mentors (Yrityskummit) (https://www.yrityskummit.fi) - Uusyrityskeskus – Finnish Enterprise Agencies (https://www.uusyrityskeskus.fi/in-english)\n",
+      "summary": "Up to €1,000,000 in three grant phases (250k + 250k + 500k) for young, high-growth Finnish startups (under 5 years old) with strong international traction, turnover and equity investments.\n",
+      "links": [
+        {
+          "label": "Business Finland – Funding for Companies",
+          "url": "https://www.businessfinland.fi/en"
+        },
+        {
+          "label": "Finnvera – Loans & Guarantees for Entrepreneurs",
+          "url": "https://www.finnvera.fi/eng"
+        },
+        {
+          "label": "Start-up Grant (Info via TE Services)",
+          "url": "https://www.te-palvelut.fi/en"
+        },
+        {
+          "label": "Finnish Business Mentors (Yrityskummit)",
+          "url": "https://www.yrityskummit.fi"
+        },
+        {
+          "label": "Uusyrityskeskus – Finnish Enterprise Agencies",
+          "url": "https://www.uusyrityskeskus.fi/in-english"
+        }
+      ],
       "stage": "scaleup",
       "country": "FI",
       "eligibility": {
@@ -690,7 +800,29 @@ export default [
       "label": "Helsinki Startup Grant",
       "provider": "Helsinki Employment Services / City of Helsinki",
       "url": "https://www.hel.fi/en/business-and-work/start-a-business/startup-grant",
-      "summary": "Startup grant to secure personal income for new full-time entrepreneurs in Helsinki. Typically around the Kela basic unemployment allowance per month for an initial 6 months, extendable up to 12 months in total. Links: - Business Finland – Funding for Companies (https://www.businessfinland.fi/en) - Finnvera – Loans & Guarantees for Entrepreneurs (https://www.finnvera.fi/eng) - Start-up Grant (Info via TE Services) (https://www.te-palvelut.fi/en) - Finnish Business Mentors (Yrityskummit) (https://www.yrityskummit.fi) - Uusyrityskeskus – Finnish Enterprise Agencies (https://www.uusyrityskeskus.fi/in-english)\n",
+      "summary": "Startup grant to secure personal income for new full-time entrepreneurs in Helsinki. Typically around the Kela basic unemployment allowance per month for an initial 6 months, extendable up to 12 months in total.\n",
+      "links": [
+        {
+          "label": "Business Finland – Funding for Companies",
+          "url": "https://www.businessfinland.fi/en"
+        },
+        {
+          "label": "Finnvera – Loans & Guarantees for Entrepreneurs",
+          "url": "https://www.finnvera.fi/eng"
+        },
+        {
+          "label": "Start-up Grant (Info via TE Services)",
+          "url": "https://www.te-palvelut.fi/en"
+        },
+        {
+          "label": "Finnish Business Mentors (Yrityskummit)",
+          "url": "https://www.yrityskummit.fi"
+        },
+        {
+          "label": "Uusyrityskeskus – Finnish Enterprise Agencies",
+          "url": "https://www.uusyrityskeskus.fi/in-english"
+        }
+      ],
       "stage": "early-company",
       "country": "FI",
       "city": "Helsinki",
@@ -816,7 +948,13 @@ export default [
       "label": "Submit Company Registration",
       "provider": "Suomi.fi / YTJ",
       "url": "https://www.suomi.fi/company",
-      "summary": "Final junction in the track. Confirms that basic idea, business plan, numbers & calculations, and form of enterprise are complete, and guides the user to submit the official company registration via Suomi.fi/YTJ. Links: - Yritysjuristi – Legal Services (https://www.yritysjuristi.fi)\n",
+      "summary": "Final junction in the track. Confirms that basic idea, business plan, numbers & calculations, and form of enterprise are complete, and guides the user to submit the official company registration via Suomi.fi/YTJ.\n",
+      "links": [
+        {
+          "label": "Yritysjuristi – Legal Services",
+          "url": "https://www.yritysjuristi.fi"
+        }
+      ],
       "stage": "submit_registration",
       "is_terminal": true,
       "required_inputs": [

@@ -13,9 +13,11 @@ options:
       expected sales volumes. These inputs are used to estimate profitability,
       cash needs, and whether the business can realistically support the
       founder.
-      Links:
-      - Vero – MyTax service (https://www.vero.fi/en/e-file/mytax)
-      - Statistics Finland – Official Statistics (https://www.stat.fi/index_en)
+    links:
+      - label: "Vero – MyTax service"
+        url: "https://www.vero.fi/en/e-file/mytax"
+      - label: "Statistics Finland – Official Statistics"
+        url: "https://www.stat.fi/index_en"
 
     required_inputs:
       - id: investment_list

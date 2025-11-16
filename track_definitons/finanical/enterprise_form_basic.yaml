@@ -12,8 +12,9 @@ options:
       (e.g. private trader, limited company, co-operative, partnership) based
       on number of founders, risk tolerance, expected turnover and willingness
       to handle administrative obligations.
-      Links:
-      - PRH – Finnish Patent and Registration Office (https://www.prh.fi/en)
+    links:
+      - label: "PRH – Finnish Patent and Registration Office"
+        url: "https://www.prh.fi/en"
 
     required_inputs:
       - id: number_of_founders

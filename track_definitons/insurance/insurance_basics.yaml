@@ -12,12 +12,17 @@ options:
       pension insurance for the entrepreneur, mandatory insurances for
       employees, and key voluntary business insurances based on the
       planned operations and risks.
-      Links:
-      - Varma – YEL income calculator (https://www.varma.fi/en)
-      - Yrittäjäkassa – Entrepreneur Unemployment Fund (https://www.yrittajakassa.fi)
-      - Tukes – Finnish Safety and Chemicals Agency (https://tukes.fi/en)
-      - Tukes – Surveillance (Who monitors what?) (https://tukes.fi/en/dothis)
-      - I Know My Products – Safety training (https://www.tunnentuotteeni.fi)
+    links:
+      - label: "Varma – YEL income calculator"
+        url: "https://www.varma.fi/en"
+      - label: "Yrittäjäkassa – Entrepreneur Unemployment Fund"
+        url: "https://www.yrittajakassa.fi"
+      - label: "Tukes – Finnish Safety and Chemicals Agency"
+        url: "https://tukes.fi/en"
+      - label: "Tukes – Surveillance (Who monitors what?)"
+        url: "https://tukes.fi/en/dothis"
+      - label: "I Know My Products – Safety training"
+        url: "https://www.tunnentuotteeni.fi"
 
     required_inputs:
       - id: self_employment_scope

@@ -10,12 +10,17 @@ options:
     summary: >
       €6,000 over 3 months for individuals who are pre-company and want to
       focus full-time on developing and validating a scalable startup idea.
-      Links:
-      - Business Finland – Funding for Companies (https://www.businessfinland.fi/en)
-      - Finnvera – Loans & Guarantees for Entrepreneurs (https://www.finnvera.fi/eng)
-      - Start-up Grant (Info via TE Services) (https://www.te-palvelut.fi/en)
-      - Finnish Business Mentors (Yrityskummit) (https://www.yrityskummit.fi)
-      - Uusyrityskeskus – Finnish Enterprise Agencies (https://www.uusyrityskeskus.fi/in-english)
+    links:
+      - label: "Business Finland – Funding for Companies"
+        url: "https://www.businessfinland.fi/en"
+      - label: "Finnvera – Loans & Guarantees for Entrepreneurs"
+        url: "https://www.finnvera.fi/eng"
+      - label: "Start-up Grant (Info via TE Services)"
+        url: "https://www.te-palvelut.fi/en"
+      - label: "Finnish Business Mentors (Yrityskummit)"
+        url: "https://www.yrityskummit.fi"
+      - label: "Uusyrityskeskus – Finnish Enterprise Agencies"
+        url: "https://www.uusyrityskeskus.fi/in-english"
 
     stage: "pre-company"
     country: "FI"

@@ -388,6 +388,7 @@ function DashboardRoadmap({ progressData, getStationWithProgress, resetSignal })
               <div className="bg-purple-50 border border-purple-100 rounded-xl p-4">
                 <h4 className="font-semibold text-purple-800 mb-2">3. Review your answers</h4>
                 <p className="text-sm text-purple-900">Use the “Answered Questions” tab to see everything you have entered organised by track. Download or print it for offline reviews.</p>
+                <p className="text-xs text-purple-700 mt-1">Before requesting an appointment, double-check these answers so you can discuss any gaps with the advisor.</p>
               </div>
               <div className="bg-amber-50 border border-amber-100 rounded-xl p-4">
                 <h4 className="font-semibold text-amber-800 mb-2">4. Book help when ready</h4>
@@ -397,6 +398,10 @@ function DashboardRoadmap({ progressData, getStationWithProgress, resetSignal })
             <div className="mt-6 bg-gray-50 border border-gray-200 rounded-xl p-4">
               <h4 className="font-semibold text-gray-800 mb-1">Need a refresher later?</h4>
               <p className="text-sm text-gray-600">You can always return to this Info tab. Progress is stored locally, so reloading the page keeps your data safe.</p>
+            </div>
+            <div className="mt-4 bg-gray-50 border border-gray-200 rounded-xl p-4">
+              <h4 className="font-semibold text-gray-800 mb-1">No cookies required</h4>
+              <p className="text-sm text-gray-600">All answers stay inside your browser storage. Nothing is sent to a server until you explicitly submit or download, so you can explore freely.</p>
             </div>
           </div>
         ) : activeTab === 'company' ? (
